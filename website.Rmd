@@ -20,13 +20,13 @@ data_file <- "mikes-data.xlsx"
 ```{r create-table}
 create_table <- function(table = NULL, file_name = NULL, removeHeaders = TRUE, caption = NULL) {
   table <- table %>%
-    kable(escape = FALSE, caption = caption) %>%
+    kable(escape = FALSE, caption = caption, align = c("l")) %>%
     kable_styling(bootstrap_options = c("hover"))
   
   if (removeHeaders) {
     table <- gsub("<thead>.*</thead>", "", table)
   }
-  fileConn<-file(paste0('docs/',file_name))
+  fileConn <- file(paste0('docs/', file_name))
   writeLines(table, fileConn)
   close(fileConn)
 }
@@ -34,8 +34,8 @@ create_table <- function(table = NULL, file_name = NULL, removeHeaders = TRUE, c
 
 ```{r update-scss}
 sass::sass(
-  sass::sass_file("resources/scss/miketheme.scss"),
-  output = "resources/css/bootstrap.css",
+  sass::sass_file("docs/resources/scss/miketheme.scss"),
+  output = "docs/resources/css/bootstrap.css",
   options = sass::sass_options(output_style = "nested")
 )
 ```
@@ -50,32 +50,34 @@ awards_html <- awards %>%
   mutate(
     col2 = paste(text_spec(name, bold = TRUE), details, sep = " - ")
   ) %>% filter(type == "Awards and Fellowships") %>% 
-  select(year, col2)
+  select(year, col2) %>% 
+  setNames(c("Awards and Fellowships", ""))
   
 travel_html <- awards %>%
   mutate(
     col2 = paste(text_spec(name, bold = TRUE), details, sep = " - ")
   )  %>% filter(type == "Travel Grants") %>% 
-  select(year, col2)
+  select(year, col2) %>% 
+  setNames(c("Travel Grants", ""))
 
-create_table(table = travel_html, caption = "Travel Grants",          file_name = 'travel_grants.html')
-create_table(table = awards_html, caption = "Awards and Fellowships", file_name = 'awards.html')
+create_table(table = travel_html,  file_name = 'travel_grants.html', removeHeaders = FALSE )
+create_table(table = awards_html, file_name = 'awards.html', removeHeaders = FALSE)
 ```
 
 ## Funded
 
 ```{r}
 grants = read_excel(data_file, sheet = "funded_research")
+grants$amount = ifelse(is.na(grants$amount), "Not Disclosed", scales::dollar(grants$amount))
 
 grants_html <- grants %>% mutate(record = text_spec(grants$name, italic = TRUE),
                                  amount = grants$amount,
                                  role = text_spec(grants$role, bold = T),
                                  source = grants$source) %>%
-  select(date, role, record, source, amount) 
+  select(date, role, record, source, amount)  %>% 
+  setNames(c('Year', rep("", nrow(grants)-1)))
 
-grants$amount = ifelse(is.na(grants$amount), "Not Disclosed", scales::dollar(grants$amount))
-
-create_table(table = grants_html, caption = "Funded Research", file_name = 'funding.html')
+create_table(table = grants_html,  file_name = 'funding.html', removeHeaders = FALSE)
 ```
 
 
@@ -154,13 +156,12 @@ publications_html <- publications %>%
                                          cartography_large = .$cartography_large),
                 stringsAsFactors=FALSE)) %>%
   do(data.frame(., formated_authors = gsub("\\{\\\\me\\}", '<b>J.M Johnson</b>', .$authors),
-                stringsAsFactors=FALSE))
-
+                stringsAsFactors=FALSE)) 
 
 
 publications_html  <- publications_html %>%
   mutate(
-    citation = paste0('<i class="far fa-file-alt"></i>',
+    citation = paste0(#'<i class="far fa-file-alt"></i>',
                       formated_authors, '. ',
                       ifelse(is.na(link), title, text_spec(title, link = link)),
                       ifelse(journal == "In review" || journal == "In preparation", '. ',  '. In '),
@@ -168,30 +169,34 @@ publications_html  <- publications_html %>%
                       year, '.',
                       new_buttons)
   ) %>%
-  select(status, citation)
+  select(status, citation, year)
 
-publication_section <- function(stat, caption, file_n) {
-  tbl <- publications_html %>% 
-    filter(status == stat) %>% 
-    select(citation)
+publication_section <- function(stat, file_n) {
   
-  create_table(table = tbl, caption = caption, file_name = file_n)
+  tbl <- publications_html %>% 
+    filter(status == stat) %>%
+    arrange(-year) %>% 
+    data.frame() %>% 
+    mutate(count = paste0("[", n():1, "]     ")) %>% 
+    mutate(citation = paste(count, citation)) %>% 
+    select(citation) %>% 
+    setNames(stat)
+  
+  tbl = rbind("", tbl )
+  
+  create_table(table = tbl, file_name = file_n, removeHeaders = FALSE)
 }
 
 publication_section(stat = "Technical Reports", 
-                    caption = "Technical Reports", 
                     file_n = "non_peer_publications.html")
 
 publication_section(stat = "Peer-Reviewed Journal Articles", 
-                    caption = "Peer-Reviewed Journal Articles", 
                     file_n = "peer_publications.html")
 
 publication_section(stat = "In Review Articles", 
-                    caption = "In Review Articles", 
                     file_n = "review_publications.html")
 
 publication_section(stat = "Cartography", 
-                    caption = "Other", 
                     file_n = "maps.publications.html")
 ```
 
@@ -232,7 +237,7 @@ teaching <- teaching %>%
                           ordered = T),
          class_link = ifelse(is.na(link), class, 
                              paste0('<a href="',link, '">', class, '</a>'))) %>% 
-  group_by(class, class_link, quarter, professor, type) %>%
+  group_by(type, class, class_link, quarter, professor, division) %>%
   mutate(points = as.numeric(year) + as.numeric(quarter)/10) %>% 
   summarise(year = paste(year,collapse=', '), 
             points = max(points)) %>% 
@@ -241,14 +246,25 @@ teaching <- teaching %>%
   
 
 teaching_html <- teaching %>%
+  filter(type == "Instructor") %>% 
   mutate(
     ' ' = paste0(text_spec(class_link, bold = TRUE, escape = FALSE), "<br>", 
-                 type, " - ", text_spec(professor, italic = TRUE))) %>%
+                 division, " - ", text_spec(professor, italic = TRUE))) %>%
+  ungroup() %>% 
+  select(data, ' ') %>%
+  rename('Instructor' = data)
+
+teaching_assisstant_html <- teaching %>%
+   filter(type == "Teaching Assisstant") %>% 
+   mutate(
+    ' ' = paste0(text_spec(class_link, bold = TRUE, escape = FALSE), "<br>", 
+                 division, " - ", text_spec(professor, italic = TRUE))) %>%
   ungroup() %>% 
   select(data, ' ') %>%
   rename('Teaching Assistant' = data)
 
 create_table(table = teaching_html, file_name = 'teaching.html', removeHeaders = FALSE)
+create_table(table = teaching_assisstant_html, file_name = 'teaching-assisstant.html', removeHeaders = FALSE)
 
 ```
 
@@ -270,7 +286,7 @@ authors  = lapply(paste("<strong>", affiliations$Name, "</strong><br>", gsub(";"
 
 # Generate Map
 affiliation_map = leaflet(affiliations, options = leafletOptions(zoomControl = FALSE, 
-                                                                 minZoom = 3, maxZoom = 3, dragging = FALSE)) %>%
+                                                                 minZoom = 2, maxZoom = 2, dragging = FALSE)) %>%
   addProviderTiles(providers$CartoDB.PositronNoLabels) %>%
   addCircleMarkers(lng = ~as.numeric(Long), lat = ~as.numeric(Lat),
                    radius = ~lengths(strsplit(affiliations$people, ";"))*4,
@@ -344,20 +360,7 @@ for (i in 1:nrow(current_work)) {
       </div>
      </div>'
     )
-  # } else {
-  #   html = paste0(html,
-  #                 '<div class="row featurette">
-  #                   <div class="col-md-7 col-md-push-5">
-  #                     <h2 class="featurette-heading">', data$main, '. <span class="text-muted">', ifelse(is.na(data$sub), '', paste0(data$sub, '.')), '</span></h2>
-  #                     <p class="lead">', data$text, '</p>
-  #                     <p><strong>Working with: </strong>', data$working_with, '</p>
-  #                   </div>
-  #                 <div class="col-md-5 col-md-pull-7">
-  #                   <img class="featurette-image img-responsive center-block shadow-left" src="', data$pic, '" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-  #                 </div>
-  #               </div>'
-  #       )
-  # }
+
 
   if (i < nrow(current_work)) {
     html = paste0(html, '<hr class="featurette-divider">')
@@ -377,7 +380,7 @@ software = read_excel(data_file, sheet = "software")
 
 software <- software %>% 
   filter(!is.na(text))  %>% 
-  mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png"))
+  mutate(pic = replace(pic, is.na(pic), "docs/resources/images/software/R_logo.png"))
 
 is.even <- function(x) x %% 2 == 0
 
