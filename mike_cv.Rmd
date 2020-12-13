@@ -48,8 +48,8 @@ form = "Curriculum Vitae"
 \begin{mybox}{Keywords:}
 \begin{center}
  Geoinformatics (GIS);
+ Hydroinformatics;
  Water Resource Modeling;
- Hydroinformatic;
  Computational Hydrology
 \end{center}
 \end{mybox}
@@ -210,8 +210,6 @@ stat = "Peer-Reviewed Journal Articles"
 
 \header{SCIENTIFIC SOFTWARE:}
 
-
-
 ```{r}
 cat("\\vspace{2mm}")
 software = read_excel("mikes-data.xlsx", sheet = "software")
@@ -248,7 +246,7 @@ software <- software %>%
   select(main, short_desc, homepage, code, role) %>% 
   mutate(link = ifelse(is.na(homepage), code, homepage))
 
-c("Author, Creator", "Author", "Contributor") %>% purrr::walk(create_software_sections)
+c("Author, Creator", "Author On", "Contributor To") %>% purrr::walk(create_software_sections)
 
 cat("\\vspace{-6mm}")
 

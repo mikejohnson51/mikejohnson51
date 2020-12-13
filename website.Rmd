@@ -206,24 +206,38 @@ publication_section(stat = "Cartography",
 ```{r}
 presentations = read_excel(data_file, sheet = "presentations")
 
-presentations_html <- presentations %>% filter(type == 'presentation') %>% 
+# presentations_html <- presentations %>% filter(type == 'presentation') %>%
+#   mutate(record = paste0(
+#   '<i class="fas fa-microphone-alt"></i>', "  ",
+#   text_spec(title, color = "#04859B", bold = T), ". ",
+#   text_spec(location, italic = TRUE), ". ",
+#   data)) %>%
+#   select(record)
+
+presentations_html <- presentations %>% filter(type == 'presentation') %>%
   mutate(record = paste0(
   '<i class="fas fa-microphone-alt"></i>', "  ",
-  text_spec(title, color = "#04859B", bold = T), ". ", 
-  text_spec(location, italic = TRUE), ". ",
-  data)) %>% 
-  select(record)
+  text_spec(title, bold = T), ". ",
+  text_spec(location, italic = TRUE), ". ", data)) %>%
+  select("Presentation" = record)
 
-posters_html <- presentations %>% filter(type != 'presentation') %>% 
+# posters_html <- presentations %>% filter(type != 'presentation') %>% 
+#   mutate(record = paste0(
+#   '<i class="far fa-map"></i>', "  ",
+#   text_spec(title, color = "#04859B", bold = F), ". ", 
+#   text_spec(location, italic = TRUE), ". ",
+#   data)) %>% 
+#   select(record)
+
+posters_html <- presentations %>% filter(type != 'presentation') %>%
   mutate(record = paste0(
   '<i class="far fa-map"></i>', "  ",
-  text_spec(title, color = "#04859B", bold = F), ". ", 
-  text_spec(location, italic = TRUE), ". ",
-  data)) %>% 
-  select(record)
+  text_spec(title, bold = F), ". ",
+  text_spec(location, italic = TRUE), ". ", data)) %>%
+  select('Poster' = record)
 
-create_table(table = presentations_html, caption = "Presentations", file_name = 'presentations.html')
-create_table(table = posters_html, caption = "Posters", file_name = 'posters.html')
+create_table(table = presentations_html, file_name = 'presentations.html', removeHeaders = FALSE)
+create_table(table = posters_html, file_name = 'posters.html',  removeHeaders = FALSE)
 
 ```
 
@@ -376,7 +390,7 @@ close(fileConn)
 ```{r}
 software = read_excel(data_file, sheet = "software") %>% 
   filter(!is.na(text))  %>% 
-  mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png"))  %>% 
+  mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png"))
   
 
 
@@ -398,7 +412,7 @@ make_software = function(software, type = "Author On"){
         '</p>
       </div>
       <div class="col-md-5">
-        <img class="featurette-image img-responsive center-block shadow-right" src="', d$pic[x], '" style="width:250px;height:250px;" data-src="holder.js/500x500/auto" alt="Generic placeholder image"></img>
+        <img class="featurette-image img-responsive center-block shadow-right" src="', d$pic[x], '" style="width:150;height:150;" data-src="holder.js/500x500/auto" alt="Generic placeholder image"></img>
       </div>
      </div>
      <hr class="featurette-divider">'
@@ -410,8 +424,6 @@ make_software = function(software, type = "Author On"){
 one = make_software(software, "Author, Creator")
 two = make_software(software, type = "Author On")
 three = make_software(software, "Contributor To")
-
-
 
 fileConn<-file('docs/software.html')
 writeLines(paste(unlist(c(one,two,three)), collapse = " "), fileConn) 
