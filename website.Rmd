@@ -277,12 +277,10 @@ affiliations = readxl::read_xlsx(data_file, sheet = "coauthors")
 
 # Affiliations Map
 require(leaflet)
-require(leafem)
 require(htmltools)
 library(dplyr)
 
-authors  = lapply(paste("<strong>", affiliations$Name, "</strong><br>", gsub(";", "<br>", affiliations$people)), 
-                  htmltools::HTML)
+authors  = lapply(paste("<strong>", affiliations$Name, "</strong><br>", gsub(";", "<br>", affiliations$people)),  htmltools::HTML)
 
 # Generate Map
 affiliation_map = leaflet(affiliations, options = leafletOptions(zoomControl = FALSE, 
@@ -298,7 +296,7 @@ affiliation_map = leaflet(affiliations, options = leafletOptions(zoomControl = F
                                          style = list(
                                            "box-shadow" = "9px 9px rgba(0,0,0,0.25)",
                                            "border-color" = "navy",
-                                           "padding-right" = "100px",
+                                           "padding-right" = "1px",
                                            "background-color" = "white")))
 
 # Create HTML file

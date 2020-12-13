@@ -3,6 +3,7 @@ output:
   pdf_document:
     includes: 
       in_header: style.tex
+      outdir: pdfs
 classoption: 11pt
 sansfont: Garamond
 subparagraph: yes
@@ -46,9 +47,9 @@ form = "Curriculum Vitae"
 \begin{center}  
 \begin{mybox}{Keywords:}
 \begin{center}
- Spatial Data Representation, Creation and Application; 
  Geoinformatics (GIS);
  Water Resource Modeling;
+ Hydroinformatic;
  Computational Hydrology
 \end{center}
 \end{mybox}
@@ -59,7 +60,7 @@ form = "Curriculum Vitae"
 \newline
 \hspace*{0mm}
 \begin{tabular}{p{4cm}P{13.5cm}}
-\textbf{March 2021 (Expected)} & \textbf{University of California, Santa Barbara, California (UCSB)} 
+\textbf{March 2021 \newline (Expected)} & \textbf{University of California, Santa Barbara, California (UCSB)} 
 \vspace{2mm}
 \newline  $>$ \textbf{Degree:} \hspace{.95cm}PhD Candidate in Geography (ABD)
 \vspace{2mm}
@@ -145,7 +146,7 @@ create_subsection <- function(grants) {
   
   cat("\\vspace{-3mm}")
   
-  df <- data.frame(citation = paste0('\\textbf{',grants$role, '}: ',
+  df <- data.frame(citation = paste0('\\textbf{', grants$role, '}: ',
                                     "\\textit{" , grants$name, "}, ",
                                     grants$source, " (",grants$date, ")", 
                                     " ",  grants$amount)
