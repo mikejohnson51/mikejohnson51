@@ -376,7 +376,8 @@ close(fileConn)
 ```{r}
 software = read_excel(data_file, sheet = "software") %>% 
   filter(!is.na(text))  %>% 
-  mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png"))  
+  mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png"))  %>% 
+  
 
 
 make_software = function(software, type = "Author On"){
@@ -405,6 +406,7 @@ make_software = function(software, type = "Author On"){
 
   })
 }
+
 one = make_software(software, "Author, Creator")
 two = make_software(software, type = "Author On")
 three = make_software(software, "Contributor To")
