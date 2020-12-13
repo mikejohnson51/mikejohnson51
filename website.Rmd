@@ -374,44 +374,45 @@ close(fileConn)
 ## Software
 
 ```{r}
-software = read_excel(data_file, sheet = "software")
-
-software <- software %>% 
+software = read_excel(data_file, sheet = "software") %>% 
   filter(!is.na(text))  %>% 
-  mutate(pic = replace(pic, is.na(pic), "docs/resources/images/software/R_logo.png"))
+  mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png"))  
 
-is.even <- function(x) x %% 2 == 0
 
-html = ''
+make_software = function(software, type = "Author On"){
+  d <- software %>% 
+    filter(!is.na(text))  %>% 
+    mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png")) %>% 
+    filter(role == !!type)
 
-for (i in 1:nrow(software)) {
-  data = software[i,]
-    html = paste0(html,
-    '<div class="row featurette">
+  lapply(1:nrow(d), function(x){
+    paste0('<div class="row featurette">
       <div class="col-md-7">
-        <h4 class="featurette-heading">', data$main, '. <span class="text-muted">', ifelse(is.na(data$sub), '', paste0(data$sub, '.')), '</span></h4>
-        <h4><span><strong> Role:</strong> ', data$role, '</span></h4>',
-    #ifelse(is.na(data$working_with), '', paste0('<h4><strong>Working with: </strong>', data$working_with, '</h4>')),
-        '<p>', data$text, '</p>',
-            ifelse(is.na(data$homepage),'',paste0('<a class="btn btn-primary" href="', data$homepage ,'" role="button">Homepage</a>')),
-            ifelse(is.na(data$code),'',paste0('<a class="btn btn-primary" href="', data$code ,'" role="button">Code</a>')),
+        <h4 class="featurette-heading">', d$main[x], '. <span class="text-muted">', 
+        ifelse(is.na(d$sub[x]), '', paste0(d$sub[x], '.')), '</span></h4>
+        <h4><span><strong> Role:</strong> ', d$role[x], '</span></h4>',
+        '<p>', d$text[x], '</p>',
+            ifelse(is.na(d$homepage[x]),'',paste0('<a class="btn btn-primary" href="', d$homepage[x] ,'" role="button">Homepage</a>')),
+            ifelse(is.na(d$code[x]),'',paste0('<a class="btn btn-primary" href="', d$code[x] ,'" role="button">Code</a>')),
         '</p>
       </div>
       <div class="col-md-5">
-        <img class="featurette-image img-responsive center-block shadow-right" src="', data$pic, '" style="width:250px;height:250px;" data-src="holder.js/500x500/auto" alt="Generic placeholder image"></img>
+        <img class="featurette-image img-responsive center-block shadow-right" src="', d$pic[x], '" style="width:250px;height:250px;" data-src="holder.js/500x500/auto" alt="Generic placeholder image"></img>
       </div>
-     </div>'
+     </div>
+     <hr class="featurette-divider">'
     )
 
-
-  if (i < nrow(software)) {
-    html = paste0(html, '<hr class="featurette-divider">')
-  }
-
+  })
 }
+one = make_software(software, "Author, Creator")
+two = make_software(software, type = "Author On")
+three = make_software(software, "Contributor To")
+
+
 
 fileConn<-file('docs/software.html')
-writeLines(html, fileConn) 
+writeLines(paste(unlist(c(one,two,three)), collapse = " "), fileConn) 
 close(fileConn)
 ```
 
