@@ -3,7 +3,6 @@ output:
   pdf_document:
     includes: 
       in_header: style.tex
-      outdir: pdfs
 classoption: 11pt
 sansfont: Garamond
 subparagraph: yes
