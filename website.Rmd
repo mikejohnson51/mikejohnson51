@@ -20,7 +20,8 @@ fs::file_copy("mike_cv.pdf", "docs/mike_johnson_cv.pdf", overwrite = TRUE)
 
 ```{r create-table}
 create_table <- function(table = NULL, file_name = NULL, removeHeaders = TRUE, caption = NULL) {
-  table <- table %>%
+  
+  table <- rbind(rep("", ncol(table)), table) %>%
     kable(escape = FALSE, caption = caption, align = c("l")) %>%
     kable_styling(bootstrap_options = c("hover"))
   
@@ -166,7 +167,7 @@ publications_html  <- publications_html %>%
                       formated_authors, '. ',
                       ifelse(is.na(link), title, text_spec(title, link = link)),
                       ifelse(journal == "In review" || journal == "In preparation", '. ',  '. In '),
-                      journal, ', ',
+                      text_spec(journal, italic = TRUE), ', ',
                       year, '.',
                       new_buttons)
   ) %>%
@@ -182,9 +183,7 @@ publication_section <- function(stat, file_n) {
     mutate(citation = paste(count, citation)) %>% 
     select(citation) %>% 
     setNames(stat)
-  
-  tbl = rbind("", tbl )
-  
+
   create_table(table = tbl, file_name = file_n, removeHeaders = FALSE)
 }
 
