@@ -3,9 +3,8 @@ title: "Website Generator"
 output: html_document
 ---
 
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r setup1, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 
 library(dplyr)
 library(knitr)
@@ -14,7 +13,8 @@ library(readxl)
 library(glue)
 
 data_file <- "mikes-data.xlsx"
-fs::file_copy("mike_cv.pdf", "docs/mike_johnson_cv.pdf", overwrite = TRUE)
+
+rmarkdown::render("mike_cv.Rmd", output_file = "docs/mike_johnson_cv.pdf")
 ```
 
 

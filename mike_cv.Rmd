@@ -41,7 +41,7 @@ form = "Curriculum Vitae"
              }
 
              
- \vspace{4mm}
+\vspace{4mm}
   
 \begin{center}  
 \begin{mybox}{Keywords:}
@@ -63,12 +63,11 @@ form = "Curriculum Vitae"
 \vspace{2mm}
 \newline  $>$ \textbf{Degree:} \hspace{.95cm}PhD Candidate in Geography (ABD)
 \vspace{2mm}
+\newline  $>$ \textbf{Emphasis:} \hspace{.45cm}Modeling, Measurement, and Computation
+\vspace{2mm}
 \newline  $>$ \textbf{Advisor:} \hspace{.8cm}Dr. Keith C. Clarke
 \vspace{2mm}
 \newline  $>$ \textbf{Committee:} \hspace{.15cm}Dr(s) Hugo Loaiciga, Kelly Caylor, David Blodgett (USGS)
-\vspace{2mm}
-\newline  $>$ \textbf{Dissertation:} Spatial Challenges of $21^{st}$ Century Water Resource Research
-\vspace{2mm}
 \vspace{2mm}\\
 \textbf{2015} & \textbf{California Polytechnic State University, San Luis Obispo, CA}
 \vspace{2mm}
@@ -81,7 +80,20 @@ form = "Curriculum Vitae"
 \newline \tab \tab \hspace{1.1cm}Water Science (Watershed Management Emphasis)  
 \newline \tab \tab \hspace{1.1cm}Environmental Studies
 \newline \tab \tab \hspace{1.1cm}Economics
+\vspace{2mm}\\
+\textbf{Visiting Researcher} & \textbf{Institute for Environmental Studies. Vrije Universiteit, Amsterdam}
 \vspace{2mm}
+\newline $>$ June - July 2019
+\newline $>$ January - March 2018
+\vspace{2mm}
+\newline \textbf{Research Applications Laboratory. NCAR, Boulder Colorado}
+\vspace{2mm}
+\newline $>$ August - September 2018
+\vspace{2mm}
+\newline \textbf{NOAA National Water Center. Tuscaloosa, Alabama }
+\vspace{2mm}
+\newline $>$ June - August 2017
+\newline $>$ June - August 2016
 \end{tabular}
 \vspace{2mm}
 
@@ -94,74 +106,12 @@ form = "Curriculum Vitae"
 \textbf{Sep 2020 - Present} & \textbf{Water Resourcees Engineer II*}: Lynker Technologies/ NOAA-Affiliate
 \newline
 Assigned to the NOAA Next Generation Water Modeling Engine and Framework Prototype development group
-\newline
 \end{tabular}
-*obtained security clearance (secret)
-\newline
-\vspace{2mm}
+*security clearance (secret)
 
-\header{AWARDS AND FELLOWSHIPS:}
-
-```{r}
-awards = read_excel("mikes-data.xlsx", sheet = "awards")
-
-awards = awards[is.na(awards$include),]
-
-award_table <- function(awards) {
-  
-  type <- first(awards$type) %>% stringr::str_to_title()
-
-  # cat(paste0("\\subhead{", type, "}"))
-  cat("\\vspace{-3mm}")
-
-  awards <- select(awards, -type) %>% arrange(desc(year), desc(Funds))
-  awards$Funds <- ifelse(is.na(awards$Funds), "", sanitize(scales::dollar(awards$Funds), type = "latex"))
-  awards$year = bold(awards$year)
-  
-  names(awards) <- c("Year","Purpose", "Amount", "Source")
-  awards = awards[,c(1,2,4,3)]
-  
-  print(xtable(awards, align = c("l","p{1.25cm}", "p{7.5cm}", "P{6cm}", "p{2.0cm}"),
-               caption = paste0("\\hspace{-5mm}", type)),
-        include.colnames = TRUE,
-        floating = TRUE,
-        #tabular.environment = "longtable",
-        sanitize.colnames.function = boldheader)
-  
-  #cat("\\vspace{4mm}")
-}
-
-awards %>% split(awards$type) %>% purrr::walk(award_table)
-
-cat("\\vspace{-8mm}")
-```
-\vspace{8mm}
-\header{FUNDED RESEARCH PROJECTS:}
-```{r}
-grants = read_excel("mikes-data.xlsx", sheet = "funded_research")
-grants$amount = ifelse(is.na(grants$amount), "Not Disclosed", paste0("\\", scales::dollar(grants$amount)))
-
-create_subsection <- function(grants) {
-  
-  cat("\\vspace{-3mm}")
-  
-  df <- data.frame(citation = paste0('\\textbf{', grants$role, '}: ',
-                                    "\\textit{" , grants$name, "}, ",
-                                    grants$source, " (",grants$date, ")", 
-                                    " ",  grants$amount)
-                                   )
-  rownames(df) <- nrow(df):1
-  
-  print(xtable(df, align = c("r","P{15.5cm}")),
-      include.rownames = TRUE)
-}
-
-create_subsection(grants)
-
-cat("\\vspace{-3mm}")
-```
 \newpage
-\header{RESEARCH:}
+\centerline{\LARGE {{\textbf{Research}}}}
+\header{PUBLICATIONS:}
 ```{r}
 publications = read_excel("mikes-data.xlsx", sheet = "publications") %>% 
   filter(status != "4")
@@ -229,7 +179,7 @@ create_software_sections <- function(type) {
   
   rownames(df) <- nrow(df):1
 
-  print(xtable(df, align = c("l","p{5cm}", "p{10.0cm}"),
+  print(xtable(df, align = c("l","p{3cm}", "p{12.0cm}"),
                 caption = paste0("\\hspace{-5mm}", type)),
         include.colnames = F,
         include.rownames = T,
@@ -254,14 +204,59 @@ cat("\\vspace{-6mm}")
 Roles as assigned in package description and defined \href{https://journal.r-project.org/archive/2012-1/RJournal_2012-1_Hornik~et~al.pdf}{here}
 \newline
 
+\header{FUNDED PROJECTS:}
+```{r}
+grants = read_excel("mikes-data.xlsx", sheet = "funded_research")
+grants$amount = italic(ifelse(is.na(grants$amount), "Not Disclosed", paste0("\\", scales::dollar(grants$amount))))
+
+
+g1 = grants %>% select(date, role, name, source, amount) %>% 
+  mutate(date = paste0('\\textbf{', date, "} ", '\\newline ', role),#bold(date),
+         source    = paste0(name, "\\newline (", italic(source), ")")) %>% 
+  select(date, source, amount)
+
+rownames(g1) = nrow(g1):1
+# create_subsection <- function(grants) {
+#   
+#   cat("\\vspace{-3mm}")
+#   
+#   df <- data.frame(citation = paste0('\\textbf{', grants$role, '}: ',
+#                                     "\\textit{" , grants$name, "}, ",
+#                                     grants$source, " (",grants$date, ")", 
+#                                     " ",  grants$amount)
+#                                    )
+#   rownames(df) <- nrow(df):1
+#   
+#   print(xtable(df, align = c("r","P{15.5cm}")),
+#       include.rownames = TRUE)
+# }
+#create_subsection(grants)
+
+print(xtable(g1, align = c("l", "p{4cm}","p{10cm}", "P{1.5cm}" )),
+      tabular.environment = 'longtable',
+      floating = FALSE,
+      include.rownames = T)
+
+cat("\\vspace{-3mm}")
+```
+
+
+\newpage
+\centerline{\LARGE {{\textbf{Teaching}}}}
 \header{INSTRUCTOR, DEPARTMENT OF GEOGRAPHY, UCSB:}
 \newline
 \hspace*{0mm}
 \begin{tabular}{p{4cm}P{13.5cm}}
-\textbf{Summer 2020} & \textbf{Geograhpy 176}: Introduction to Geographic Information Science
+\textbf{Summer 2020} & \textbf{Introduction to Geoinformatics}
 \vspace{2mm}
 \newline  $>$ Independently developed a complete Geoinformatics course to address the growing need for data science and programming in GIS profession.
+\vspace{2mm}
+\newline  $>$ Designed for remote instruction during COVID-19
+\vspace{2mm}
 \newline  $>$ Taught the foundations of reproducible data science, spatial data models, and programming to a class of 48 students
+\vspace{2mm}
+\newline  $>$ Will become new prerequisite spatial data/programming course for the UCSB Geography Department and new Masters is GIS Curriculum
+\vspace{2mm}
 \newline  $>$ Content Available here: \textcolor{header_blue}{\textcolor{gray}{\faUniversity} \hspace{0.2mm} \url{https://mikejohnson51.github.io/spds/}}
 \vspace{2mm}
 \end{tabular}
@@ -271,14 +266,15 @@ Roles as assigned in package description and defined \href{https://journal.r-pro
 \vspace{3mm}
 \header{TEACHING ASSISTANT, DEPARTMENT OF GEOGRAPHY, UCSB:}
 ```{r}
-teaching = read_excel("mikes-data.xlsx", sheet = "teaching")
+teaching = read_excel("mikes-data.xlsx", sheet = "teaching") %>% 
+  filter(type == "Teaching Assisstant")
 
 teaching <- teaching %>%
   mutate(quarter = factor(quarter, levels = c("Fall", "Winter", "Spring", "Summer"), 
                           ordered = T),
          class_link = ifelse(is.na(link), class, 
                              paste0('<a href="',link, '">', class, '</a>'))) %>% 
-  group_by(class, class_link, type) %>%
+  group_by(class, class_link, division) %>%
   mutate(points = as.numeric(year) + as.numeric(quarter)/10,
          professor = paste(unique(professor), collapse = ", ")) %>% 
   summarise(year = paste(year,collapse=', '), 
@@ -290,14 +286,12 @@ teaching <- teaching %>%
 #teaching[1,1] = paste0(teaching[1,1], "\\textsuperscript{1}")
   
 col2 <- paste0('{', bold(teaching$class), '}', ' NEWLINE ', 
-               teaching$type, " - ", italic(teaching$professor))
+               teaching$division, " - ", italic(teaching$professor))
 
 df = data.frame(date = bold(teaching$data),
                 class = col2)
 
 rownames(df) <- nrow(df):1
-
-
 
 print(xtable(df, align = c("l","P{5cm}", "p{12.0cm}")),
       tabular.environment = 'longtable',
@@ -313,40 +307,113 @@ cat("\\vspace{-6mm}")
 
 \vspace{8mm}
 \header{UNDERGRADUATE RESEARCH MENTORSHIP, UCSB:}
+> Have served an a mentor for 9 undergraduates in formal capacities including independent research projects, inclusion in research efforts, and instructional independent study.
+\newline
+\newline
+> Serving as a faculty mentor for the Gene & Susan Lucas Undergraduate Research Fund which was created to help first-generation undergraduate students experience research
+\vspace{2mm}
+
+<!-- ```{r} -->
+<!-- cat("\\vspace{-3mm}") -->
+<!-- mentorship = read_excel("mikes-data.xlsx", sheet = "mentorship") -->
+
+<!-- df = data.frame(date = bold(mentorship$date), student = mentorship$name) -->
+
+<!-- rownames(df) <- nrow(df):1 -->
+
+<!-- print(xtable(df,  -->
+<!--              align = c("r","p{2.5cm}", "P{14.0cm}")), -->
+<!--              inlcude.rownames = TRUE) -->
+
+<!-- cat("\\vspace{-6mm}") -->
+<!-- ``` -->
+
+\newpage
+\centerline{\LARGE {{\textbf{Other}}}}
+\header{AWARDS, FELLOWSHIPS, EXPERIANCE:}
+\vspace{-3mm}
+
 ```{r}
-cat("\\vspace{-3mm}")
-mentorship = read_excel("mikes-data.xlsx", sheet = "mentorship")
+awards = read_excel("mikes-data.xlsx", sheet = "awards") %>% 
+  filter(type == "Awards and Fellowships") %>% 
+  select(year, name, details, sort_year) %>% 
+  filter(name != 'Jack & Laura Dangermond Fellowship')
 
-df = data.frame(date = bold(mentorship$date), student = mentorship$name)
 
-rownames(df) <- nrow(df):1
-
-print(xtable(df, 
-             align = c("r","p{2.5cm}", "P{14.0cm}")),
-             inlcude.rownames = TRUE)
-
-cat("\\vspace{-6mm}")
-```
-
-\header{EXPERIENCE:}
-```{r}
 experience = read_excel("mikes-data.xlsx", sheet = "experience")
 
-df = data.frame(date = bold(experience$data),
-                title = experience$title,
-                location = experience$location)
-names(df) = bold(c("Year", "Postition", "Location"))
+df = data.frame(year = experience$data,
+                name = experience$title,
+                details = experience$location,
+                sort_year = experience$sort_year)
 
-cat("\\vspace{-3mm}")
+df3 = rbind(df, awards) %>% 
+  group_by(name) %>% 
+  mutate(year = bold(paste0(sort(year, decreasing = TRUE), collapse = ", "))) %>% 
+  slice(1) %>% 
+  ungroup() %>% 
+  arrange(desc(sort_year)) %>% 
+  select(-sort_year) %>% 
+  data.frame()
 
-print(xtable(df, align = c("l","p{3cm}", "p{7.0cm}", "P{6.0cm}")),
-      include.colnames = F,
-      booktabs = TRUE,
-      sanitize.text.function = bold.somerows,
-      latex.environments = "left")
+rownames(df3) <- nrow(df3):1
+
+print(xtable(df3, align = c("l","p{2.5cm}", "p{7.5cm}", "P{6cm}")),
+      tabular.environment = 'longtable',
+      floating = FALSE,
+      include.rownames = T)
+```
+
+\header{SERVICE:}
+\vspace{-3mm}
+```{r}
+service = data.frame(
+                service = c("Chair's Graduate Advisory Committee:",
+                         "Spatial Data Science Faculty Search Committee:",
+                         "Reviewer for: European Journal of Environmental and Civil Engineering, Transactions in GIS",
+                         "Department Outreach Committee:"
+                         ),
+                date = c("2019-2021 Academic Year(s)",
+                         "2018",
+                         "",
+                         "2015-2017"))
+
+create_subsection <- function(grants) {
+  
+  cat("\\vspace{-3mm}")
+  
+  df <- data.frame(citation = paste0(service$service, ' \\textit{',service$date, "}" ))
+  rownames(df) <- nrow(df):1
+  
+  print(xtable(df, align = c("r","P{15.5cm}")),
+      include.rownames = TRUE)
+}
+
+create_subsection(grants)
 
 cat("\\vspace{-3mm}")
 ```
+
+<!-- \newpage -->
+<!-- \header{EXPERIENCE:} -->
+<!-- ```{r} -->
+<!-- experience = read_excel("mikes-data.xlsx", sheet = "experience") -->
+
+<!-- df = data.frame(date = bold(experience$data), -->
+<!--                 title = experience$title, -->
+<!--                 location = experience$location) -->
+<!-- names(df) = bold(c("Year", "Postition", "Location")) -->
+
+<!-- cat("\\vspace{-3mm}") -->
+
+<!-- print(xtable(df, align = c("l","p{3cm}", "p{7.0cm}", "P{6.0cm}")), -->
+<!--       include.colnames = F, -->
+<!--       booktabs = TRUE, -->
+<!--       sanitize.text.function = bold.somerows, -->
+<!--       latex.environments = "left") -->
+
+<!-- cat("\\vspace{-3mm}") -->
+<!-- ``` -->
 
 \header{PRESENTATIONS:}
 ```{r}
@@ -363,12 +430,12 @@ df = data.frame(date = bold(presentations$data),
 rownames(df) <- nrow(df):1
 
 print(xtable(df, align = c("l","p{2.5cm}", "P{9.5cm}", "p{.5cm}", "P{2cm}")),
-      include.rownames = TRUE,
-      booktabs = TRUE)
+      include.rownames = TRUE#,
+      #booktabs = TRUE
+      )
 
 ```
 
-\vspace{8mm}
 \header{REFERENCES:}
 \vspace{-3mm}
 ```{r}
@@ -423,5 +490,4 @@ print(xtable(data.frame(do.call(paste0, c(df[,1:3]))), align = c("l","p{20cm}"),
         floating = TRUE,
         tabular.environment = "tabular",
         sanitize.colnames.function = boldheader))
-
 ```
