@@ -14,7 +14,7 @@ library(glue)
 
 data_file <- "mikes-data.xlsx"
 
-rmarkdown::render("mike_cv.Rmd", output_file = "docs/mike_johnson_cv.pdf")
+rmarkdown::render("00_mike_cv.Rmd", output_file = "docs/mike_johnson_cv.pdf")
 ```
 
 
