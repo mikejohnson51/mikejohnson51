@@ -414,7 +414,9 @@ make_software = function(software, type = "Author On"){
         '</p>
       </div>
       <div class="col-md-5">
-     <div class="github-card" data-github="mikejohnson51" data-width="400" data-height="" data-theme="default"></div>
+     <div class="github-card" data-github="', gsub("https://github.com/", "", d$code[x]), '" data-width="400" data-height="" data-theme="default"></div>
+     <script src="resources/js/widget.js"></script>
+     </div>
      </div>
      <hr class="featurette-divider">'
     )
