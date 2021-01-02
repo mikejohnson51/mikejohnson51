@@ -90,7 +90,9 @@ create_table(table = grants_html,  file_name = 'funding.html', removeHeaders = F
 publications = read_excel(data_file, sheet = "publications") %>% 
   filter(status != "4")
 
-buttons <- function(abstract, pdf, num, code, cartography_small, cartography_large) {
+buttons <- function(abstract,
+                    image, 
+                    pdf, num, code, cartography_small, cartography_large) {
 
   html = '<p> '
 
@@ -126,10 +128,25 @@ buttons <- function(abstract, pdf, num, code, cartography_small, cartography_lar
 
   # Collapsible Sections
 
-  # Text Abstracts
-  if (!is.na(abstract)) {
-    html = paste0(html, '<div class="collapse" id="abstract_',num,'"><div class="card card-body"><p>',abstract,'</p></div></div>')
-  }
+# Text Abstracts
+if (!is.na(abstract)) {
+
+ html = paste0(
+ html, '<div class="collapse" id="abstract_', num,'">
+ <div class="card card-body">
+ <div class="row">
+ <div class="col-sm-4">
+ <a href="', image, '" data-toggle="lightbox">
+ <img src="', image,'" class="img-fluid img-responsive">
+ </a>
+ </div>
+ <div class="col-sm-8"><p>',abstract,'</p></div>
+ </div>
+ </div>'
+ )
+
+ }
+
 
   # Cartography Maps
   if (!is.na(cartography_small)) {
@@ -152,6 +169,7 @@ publications_html <- publications %>%
   rowwise() %>%
   do(data.frame(.,new_buttons = buttons(pdf = .$pdf,
                                          abstract = .$abstract,
+                                         image = .$image_path,
                                          num = .$number,
                                          code = .$code,
                                          cartography_small = .$cartography_small,
@@ -167,8 +185,8 @@ publications_html  <- publications_html %>%
                       formated_authors, '. ',
                       ifelse(is.na(link), title, text_spec(title, link = link)),
                       ifelse(journal == "In review" || journal == "In preparation", '. ',  '. In '),
-                      text_spec(journal, italic = TRUE), ', ',
-                      year, '.',
+                      text_spec(journal, italic = TRUE), 
+                      ifelse(is.na(year), "", paste(",", year)), '.',
                       new_buttons)
   ) %>%
   select(status, citation, year)
@@ -206,14 +224,6 @@ publication_section(stat = "Cartography",
 ```{r}
 presentations = read_excel(data_file, sheet = "presentations")
 
-# presentations_html <- presentations %>% filter(type == 'presentation') %>%
-#   mutate(record = paste0(
-#   '<i class="fas fa-microphone-alt"></i>', "  ",
-#   text_spec(title, color = "#04859B", bold = T), ". ",
-#   text_spec(location, italic = TRUE), ". ",
-#   data)) %>%
-#   select(record)
-
 presentations_html <- presentations %>% filter(type == 'presentation') %>%
   mutate(record = paste0(
   '<i class="fas fa-microphone-alt"></i>', "  ",
@@ -221,13 +231,6 @@ presentations_html <- presentations %>% filter(type == 'presentation') %>%
   text_spec(location, italic = TRUE), ". ", data)) %>%
   select("Presentation" = record)
 
-# posters_html <- presentations %>% filter(type != 'presentation') %>% 
-#   mutate(record = paste0(
-#   '<i class="far fa-map"></i>', "  ",
-#   text_spec(title, color = "#04859B", bold = F), ". ", 
-#   text_spec(location, italic = TRUE), ". ",
-#   data)) %>% 
-#   select(record)
 
 posters_html <- presentations %>% filter(type != 'presentation') %>%
   mutate(record = paste0(
