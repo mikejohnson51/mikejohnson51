@@ -134,8 +134,8 @@ if (!is.na(abstract)) {
  html = paste0(
  html, '<div class="collapse" id="abstract_', num,'">
  <div class="card card-body">
- <div class="row">
- <div class="col-sm-4">
+ <div class="row row-eq-height">
+ <div class="col-sm-4 my-auto">
  <a href="', image, '" data-toggle="lightbox">
  <img src="', image,'" class="img-fluid img-responsive">
  </a>
@@ -396,17 +396,16 @@ software = read_excel(data_file, sheet = "software") %>%
   mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png"))
   
 
-
 make_software = function(software, type = "Author On"){
-  d <- software %>% 
-    filter(!is.na(text))  %>% 
-    mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png")) %>% 
+  d <- software %>%
+    filter(!is.na(text))  %>%
+    mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png")) %>%
     filter(role == !!type)
 
   lapply(1:nrow(d), function(x){
     paste0('<div class="row featurette">
       <div class="col-md-7">
-        <h4 class="featurette-heading">', d$main[x], '. <span class="text-muted">', 
+        <h4 class="featurette-heading">', d$main[x], '. <span class="text-muted">',
         ifelse(is.na(d$sub[x]), '', paste0(d$sub[x], '.')), '</span></h4>
         <h4><span><strong> Role:</strong> ', d$role[x], '</span></h4>',
         '<p>', d$text[x], '</p>',
@@ -415,14 +414,42 @@ make_software = function(software, type = "Author On"){
         '</p>
       </div>
       <div class="col-md-5">
-        <img class="featurette-image img-responsive center-block shadow-right" src="', d$pic[x], '" style="width:150;height:150;" data-src="holder.js/500x500/auto" alt="Generic placeholder image"></img>
-      </div>
+     <div class="github-card" data-github="mikejohnson51" data-width="400" data-height="" data-theme="default"></div>
      </div>
      <hr class="featurette-divider">'
     )
 
   })
 }
+
+# 
+# make_software = function(software, type = "Author On"){
+#   d <- software %>%
+#     filter(!is.na(text))  %>%
+#     mutate(pic = replace(pic, is.na(pic), "resources/images/software/R_logo.png")) %>%
+#     filter(role == !!type)
+# 
+#   lapply(1:nrow(d), function(x){
+#     paste0('<div class="row featurette">
+#       <div class="col-md-7">
+#         <h4 class="featurette-heading">', d$main[x], '. <span class="text-muted">',
+#         ifelse(is.na(d$sub[x]), '', paste0(d$sub[x], '.')), '</span></h4>
+#         <h4><span><strong> Role:</strong> ', d$role[x], '</span></h4>',
+#         '<p>', d$text[x], '</p>',
+#             ifelse(is.na(d$homepage[x]),'',paste0('<a class="btn btn-primary" href="', d$homepage[x] ,'" role="button">Homepage</a>')),
+#             ifelse(is.na(d$code[x]),'',paste0('<a class="btn btn-primary" href="', d$code[x] ,'" role="button">Code</a>')),
+#         '</p>
+#       </div>
+#       
+#       <div class="col-md-5">
+#         <img class="featurette-image img-responsive center-block shadow-right" src="', d$pic[x], '" style="width:150;height:150;" data-src="holder.js/500x500/auto" alt="Generic placeholder image"></img>
+#       </div>
+#      </div>
+#      <hr class="featurette-divider">'
+#     )
+# 
+#   })
+# }
 
 one = make_software(software, "Author, Creator")
 two = make_software(software, type = "Author On")

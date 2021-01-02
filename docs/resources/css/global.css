@@ -1,6 +1,20 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
 
+.my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+@media (min-width:800px) {
+  .row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:  flex;
+  }
+}
+
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
