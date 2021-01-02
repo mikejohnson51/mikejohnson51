@@ -247,14 +247,16 @@ create_table(table = posters_html, file_name = 'posters.html',  removeHeaders = 
 ## Teaching 
 
 ```{r}
-teaching = read_excel(data_file, sheet = "teaching")
 
-teaching <- teaching %>%
+fill = '<div class="github-card" data-github="mikejohnson51/spds" data-width="400" data-height="" data-theme="default"></div> <script src="resources/js/widget.js"></script>'
+  
+teaching = read_excel(data_file, sheet = "teaching") %>% 
+   dplyr::mutate(link = ifelse(.$type == 'Instructor', fill, link)) %>%
   mutate(quarter = factor(quarter, levels = c("Fall", "Winter", "Spring", "Summer"), 
                           ordered = T),
          class_link = ifelse(is.na(link), class, 
                              paste0('<a href="',link, '">', class, '</a>'))) %>% 
-  group_by(type, class, class_link, quarter, professor, division) %>%
+  group_by(type, class, link, class_link, quarter, professor, division) %>%
   mutate(points = as.numeric(year) + as.numeric(quarter)/10) %>% 
   summarise(year = paste(year,collapse=', '), 
             points = max(points)) %>% 
@@ -265,8 +267,10 @@ teaching <- teaching %>%
 teaching_html <- teaching %>%
   filter(type == "Instructor") %>% 
   mutate(
-    ' ' = paste0(text_spec(class_link, bold = TRUE, escape = FALSE), "<br>", 
-                 division, " - ", text_spec(professor, italic = TRUE))) %>%
+    ' ' = link
+      # paste0(link, "<br>", 
+      #            division, " - ", text_spec(professor, italic = TRUE))
+    ) %>%
   ungroup() %>% 
   select(data, ' ') %>%
   rename('Instructor' = data)
@@ -280,7 +284,12 @@ teaching_assisstant_html <- teaching %>%
   select(data, ' ') %>%
   rename('Teaching Assistant' = data)
 
-create_table(table = teaching_html, file_name = 'teaching.html', removeHeaders = FALSE)
+fileConn <- file(paste0('docs/teaching.html'))
+writeLines(fill, fileConn)
+close(fileConn)
+
+
+#create_table(table = fill, file_name = 'teaching.html', removeHeaders = FALSE)
 create_table(table = teaching_assisstant_html, file_name = 'teaching-assisstant.html', removeHeaders = FALSE)
 
 ```
