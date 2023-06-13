@@ -1,10 +1,92 @@
+<h1>Hey! Nice to see you.</h1>
 
-<h2> Hi, I'm <a href="http://mikejohnson51.github.io">Mike</a>! <img src="https://media.giphy.com/media/xT9IgAtlzpGaGq6W9W/giphy.gif" width="50"></h2>
-<img align='right' src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="230">
-<p><em>Data Scientist @<a href="https://lynker-intel.com">Lynker</a> working for <a href="https://water.noaa.gov">NOAA Office of Water Prediction</a> <img src="https://media.giphy.com/media/KecanG5Y9XjzYXP0JL/giphy.gif" width="30">
+Hi, I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scientist living in <img src="/Users/mjohnson/github/mikejohnson51/icons8-colorado-flag-48.png" width="13"/> <b>Fort Collins, Colorado</b> working for <a href="https://lynker-intel.com">Lynker</a> and <a href="https://water.noaa.gov">NOAA Office of Water Prediction</a> 
 
 [![GitHub mikejohnson51](https://img.shields.io/github/followers/mikejohnson51?label=follow&style=social)](https://github.com/mikejohnson51) ![GitHub mikejohnson51](https://img.shields.io/github/stars/mikejohnson51?affiliations=OWNER%2CCOLLABORATOR%2CORGANIZATION_MEMBER&style=social)
 
-# Highlights
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=mikejohnson51&repo=climateR&theme=highcontrast)](https://github.com/mikejohnson51/climateR)  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=mikejohnson51&repo=nwmTools&theme=highcontrast)](https://github.com/mikejohnson51/nwmTools)[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=mikejohnson51&repo=climateR-catalogs&theme=highcontrast)](https://github.com/mikejohnson51/climateR-catalogs)[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=mikejohnson51&repo=zonal&theme=highcontrast)](https://github.com/mikejohnson51/zonal) [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=USGS-R&repo=nhdplusTools&theme=highcontrast)](https://github.com/USGS-R/nhdplusTools) [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=USGS-R&repo=dataRetrieval&theme=highcontrast)](https://github.com/USGS-R/dataRetrieval)
+<h3>Things I code with</h3>
+<p>
+  <img alt="R" src="https://img.shields.io/badge/-R-45b8d8?style=flat-square&logo=react&logoColor=white" />
+  <img alt="GDAL" src="https://img.shields.io/badge/-GDAL-45b8d8?style=flat-square&logo=react&logoColor=white" />
+  <img alt="git" src="https://img.shields.io/badge/-git-45b8d8?style=flat-square&logo=react&logoColor=white" />
+</p>
+<h3>Open source projects</h3>
+<table>
+  <thead align="center">
+    <tr border: none;>
+      <td><b>📚 Projects</b></td>
+      <td><b>⭐ Stars</b></td>
+      <td><b>🍴 Forks</b></td>
+      <td><b>🛎 Issues</b></td>
+      <td><b>📬 Pull requests</b></td>
+    </tr>
+  </thead>
+  <tbody>
+   <tr>
+      <td><a href="https://github.com/mikejohnson51/AOI"><b>mikejohnson51/AOI</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/mikejohnson51/AOI?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/mikejohnson51/AOI?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/mikejohnson51/AOI?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/mikejohnson51/AOI?style=flat-square&labelColor=343b41"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/mikejohnson51/climateR"><b>mikejohnson51/climateR</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/mikejohnson51/climateR?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/mikejohnson51/climateR?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/mikejohnson51/climateR?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/mikejohnson51/climateR?style=flat-square&labelColor=343b41"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/mikejohnson51/climateR-catalogs"><b>mikejohnson51/climateR-catalogs &ensp;</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/mikejohnson51/climateR-catalogs?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/mikejohnson51/climateR-catalogs?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/mikejohnson51/climateR-catalogs?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/mikejohnson51/climateR-catalogs?style=flat-square&labelColor=343b41"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/mikejohnson51/zonal"><b>mikejohnson51/zonal</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/mikejohnson51/zonal?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/mikejohnson51/zonal?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/mikejohnson51/zonal?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/mikejohnson51/zonal?style=flat-square&labelColor=343b41"/></td>
+    </tr>
+    <br>
+    <tr>
+      <td><a href="https://github.com/mikejohnson51/nwmTools"><b>mikejohnson51/nwmTools</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/mikejohnson51/nwmTools?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/mikejohnson51/nwmTools?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/mikejohnson51/nwmTools?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/mikejohnson51/nwmTools?style=flat-square&labelColor=343b41"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/USGS-R/nhdplusTools"><b>USGS-R/nhdplusTools</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/USGS-R/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/USGS-R/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/USGS-R/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/USGS-R/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/USGS-R/dataRetrieval"><b>USGS-R/dataRetrieval</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/USGS-R/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/USGS-R/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/USGS-R/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/USGS-R/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
+    </tr>
+      <td><a href="https://github.com/NOAA-OWP/hydrofabric"><b>NOAA-OWP/hydrofabric</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/NOAA-OWP/hydrofabric?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/NOAA-OWP/hydrofabric?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/NOAA-OWP/hydrofabric?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/NOAA-OWP/hydrofabric?style=flat-square&labelColor=343b41"/></td>
+    </tr>
+  </tbody>
+</table>
 
+<h3>Where to find me</h3>
+<p><a href="https://github.com/mikejohnson51" target="_blank"><img alt="Github" src="https://img.shields.io/badge/GitHub-%2312100E.svg?&style=for-the-badge&logo=Github&logoColor=white" /></a> <a href="https://twitter.com/__mike_johnson" target="_blank"><img alt="Twitter" src="https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white" /></a> <a href="https://www.linkedin.com/in/mike-johnson-phd-926b34145/" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+<a href="mailto:jjohsnon@lynker.com"><img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white" /></a> &nbsp;
+</p>
+
+<p align="center"> 
+  Visitor count<br>
+  <img src="https://profile-counter.glitch.me/mikejohnson51/count.svg" />
+</p>
