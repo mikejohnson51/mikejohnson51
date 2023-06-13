@@ -1,6 +1,6 @@
 <h1>Hey! Nice to see you.</h1>
 
-Hi, I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scientist living in <img src="/Users/mjohnson/github/mikejohnson51/icons8-colorado-flag-48.png" width="13"/> <b>Fort Collins, Colorado</b> working for <a href="https://lynker-intel.com">Lynker</a> and <a href="https://water.noaa.gov">NOAA Office of Water Prediction</a> 
+Hi, I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scientist living in <img src="icons8-colorado-flag-48.png" width="13"/> <b>Fort Collins, Colorado</b> working for <a href="https://lynker-intel.com">Lynker</a> and <a href="https://water.noaa.gov">NOAA Office of Water Prediction</a> 
 
 [![GitHub mikejohnson51](https://img.shields.io/github/followers/mikejohnson51?label=follow&style=social)](https://github.com/mikejohnson51) ![GitHub mikejohnson51](https://img.shields.io/github/stars/mikejohnson51?affiliations=OWNER%2CCOLLABORATOR%2CORGANIZATION_MEMBER&style=social)
 
