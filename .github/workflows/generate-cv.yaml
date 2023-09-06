@@ -2,7 +2,6 @@ on:
   schedule:
     - cron: '0 0 1 * *'
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 name: CV refresh
@@ -22,11 +21,13 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v2
 
+      - uses: r-lib/actions/setup-renv@v2
+
       - name: Install packages, render Rmarkdown CV file and Commit Results
         run: |
           echo "Rendering the page..."
           Rscript -e 'install.packages(c("knitr", "rmarkdown", "scholar",
-          "vitea", "stringr", "readr", "RefManageR", "tidyr", "dplyr", "gsheet"))'
+          "viteae", "stringr", "readr", "RefManageR", "tidyr", "dplyr", "gsheet"))'
           Rscript -e 'rmarkdown::render(input = "CV.Rmd")'
           if [[ "$(git status --porcelain)" != "" ]]; then
             git config --local user.name "$GITHUB_ACTOR"
