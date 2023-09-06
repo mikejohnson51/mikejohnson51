@@ -5,7 +5,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-name: CV referesh
+name: CV refresh
 
 jobs:
   render-rmarkdown:
@@ -25,7 +25,8 @@ jobs:
       - name: Install packages, render Rmarkdown CV file and Commit Results
         run: |
           echo "Rendering the page..."
-          Rscript -e 'install.packages(c("knitr", "rmarkdown"))'
+          Rscript -e 'install.packages(c("knitr", "rmarkdown", "scholar",
+          "vitea", "stringr", "readr", "RefManageR", "tidyr", "dplyr", "gsheet"))'
           Rscript -e 'rmarkdown::render(input = "CV.Rmd")'
           if [[ "$(git status --porcelain)" != "" ]]; then
             git config --local user.name "$GITHUB_ACTOR"
