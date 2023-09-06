@@ -10,6 +10,10 @@ Hi, I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scient
   <img alt="GDAL" src="https://img.shields.io/badge/-GDAL-45b8d8?style=flat-square&logo=react&logoColor=white" />
   <img alt="git" src="https://img.shields.io/badge/-git-45b8d8?style=flat-square&logo=react&logoColor=white" />
 </p>
+
+<h3>My latest CV:</h3>
+<a href="CV.pdf"><b>CV</b></a>
+
 <h3>Open source projects</h3>
 <table>
   <thead align="center">
@@ -29,6 +33,7 @@ Hi, I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scient
       <td><img alt="Issues" src="https://img.shields.io/github/issues/mikejohnson51/AOI?style=flat-square&labelColor=343b41"/></td>
       <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/mikejohnson51/AOI?style=flat-square&labelColor=343b41"/></td>
     </tr>
+    <br> 
     <tr>
       <td><a href="https://github.com/mikejohnson51/climateR"><b>mikejohnson51/climateR</b></a></td>
       <td><img alt="Stars" src="https://img.shields.io/github/stars/mikejohnson51/climateR?style=flat-square&labelColor=343b41"/></td>
@@ -50,7 +55,6 @@ Hi, I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scient
       <td><img alt="Issues" src="https://img.shields.io/github/issues/mikejohnson51/zonal?style=flat-square&labelColor=343b41"/></td>
       <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/mikejohnson51/zonal?style=flat-square&labelColor=343b41"/></td>
     </tr>
-    <br>
     <tr>
       <td><a href="https://github.com/mikejohnson51/nwmTools"><b>mikejohnson51/nwmTools</b></a></td>
       <td><img alt="Stars" src="https://img.shields.io/github/stars/mikejohnson51/nwmTools?style=flat-square&labelColor=343b41"/></td>
@@ -59,18 +63,25 @@ Hi, I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scient
       <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/mikejohnson51/nwmTools?style=flat-square&labelColor=343b41"/></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/USGS-R/nhdplusTools"><b>USGS-R/nhdplusTools</b></a></td>
-      <td><img alt="Stars" src="https://img.shields.io/github/stars/USGS-R/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
-      <td><img alt="Forks" src="https://img.shields.io/github/forks/USGS-R/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
-      <td><img alt="Issues" src="https://img.shields.io/github/issues/USGS-R/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
-      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/USGS-R/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
+      <td><a href="https://github.com/DOI-USGS/nhdplusTools"><b>DOI-USGS/nhdplusTools</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/DOI-USGS/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/DOI-USGS/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/DOI-USGS/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/DOI-USGS/nhdplusTools?style=flat-square&labelColor=343b41"/></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/USGS-R/dataRetrieval"><b>USGS-R/dataRetrieval</b></a></td>
-      <td><img alt="Stars" src="https://img.shields.io/github/stars/USGS-R/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
-      <td><img alt="Forks" src="https://img.shields.io/github/forks/USGS-R/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
-      <td><img alt="Issues" src="https://img.shields.io/github/issues/USGS-R/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
-      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/USGS-R/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
+      <td><a href="https://github.com/DOI-USGS/hyRefactor"><b>DOI-USGS/hyRefactor</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/DOI-USGS/hyRefactor?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/DOI-USGS/hyRefactor?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/DOI-USGS/hyRefactor?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/DOI-USGS/hyRefactor?style=flat-square&labelColor=343b41"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/DOI-USGS/dataRetrieval"><b>DOI-USGS/dataRetrieval</b></a></td>
+      <td><img alt="Stars" src="https://img.shields.io/github/stars/DOI-USGS/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Forks" src="https://img.shields.io/github/forks/DOI-USGS/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Issues" src="https://img.shields.io/github/issues/DOI-USGS/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
+      <td><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/DOI-USGS/dataRetrieval?style=flat-square&labelColor=343b41"/></td>
     </tr>
       <td><a href="https://github.com/NOAA-OWP/hydrofabric"><b>NOAA-OWP/hydrofabric</b></a></td>
       <td><img alt="Stars" src="https://img.shields.io/github/stars/NOAA-OWP/hydrofabric?style=flat-square&labelColor=343b41"/></td>

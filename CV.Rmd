@@ -1,0 +1,236 @@
+---
+name: Dr. J Michael
+surname: Johnson
+position: 'Data Scientist | Geographer | Water Resources'
+address: Fort Collins, Colorado
+date: "`r format(Sys.time(), '%B, %Y')`"
+qualifications: PhD
+googlescholar: MrXM9cgAAAAJ
+email: 'jjohnson@lynker.com'
+www: mikejohnson51.github.io
+github: mikejohnson51
+fontawesome: yes
+docname: Curriculum Vitae
+aboutme: I am a \textbf{water resource data scientist} at [Lynker](https://lynker-intel.com/) leading the \textbf{hydrofabric development for NOAA's Next Generation National Water Model} along with the federal efforts to define a national suite of hydroinformatic data products. I seek to bridge \textbf{data-intensive computational geography} with \textbf{water resources research} and develop open-source software to ease community access to big data.
+headcolor: 414141
+csl: apa-cv.csl
+output: 
+  vitae::awesomecv:
+    keep_tex: true
+    pandoc_args: ["--lua-filter=lua/strong.lua"]
+---
+
+```{r setup, include=FALSE}
+library(scholar)
+library(vitae)
+library(stringr)
+library(readxl)
+library(readr)
+library(RefManageR)
+library(tidyr)
+library(dplyr)
+
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message=FALSE, error=FALSE)
+
+mike_gs = get_profile('MrXM9cgAAAAJ') 
+
+cites = get_publications('MrXM9cgAAAAJ') %>% 
+   filter(!grepl("AGU|EGU|Fall Meeting", journal)) %>%
+   filter(journal != "")
+
+follow = readLines('https://img.shields.io/github/followers/mikejohnson51?label=follow&style=social')
+f = str_match(follow, "<title>Follow: \\s*(.*?)\\s*</title>")[,2]
+
+stars = readLines('https://img.shields.io/github/stars/mikejohnson51?affiliations=OWNER%2CCOLLABORATOR%2CORGANIZATION_MEMBER&style=social')
+s = str_match(stars, "<title>Stars: \\s*(.*?)\\s*</title>")[,2]
+
+funds = read_excel("mikes-data.xlsx", sheet = "funded_research")
+
+personal = sum(ifelse(is.na(parse_number(funds$amount2)), parse_number(funds$amount), parse_number(funds$amount2)))
+personal = paste0("$", formatC(as.numeric(personal), format="f", digits=0, big.mark=","))
+
+team = sum(parse_number(funds$amount))
+team = paste0("$", formatC(as.numeric(team), format="f", digits=0, big.mark=","))
+
+```
+
+# Employment
+
+```{r consulting}
+tribble(
+  ~ role, ~ company, ~ loc, ~ dates, ~ details,
+  "Data Scientist", "Lynker", "Fort Collins, Colorado", "August 2020 - Present", 
+    list("Lead the spatial data development for the NOAA NextGen Water Resource Modeling Framework",
+         "Contribute to local and state level consulting projects related to water resource managment and hazard mitigation",
+         "Recruit, retain, and mentor a strong and diverse group of data scientists"
+    ),
+  
+  "Hydrofabric Technical Director", "NOAA Office of Water Prediction", "Remote", "Sep 2022 - Present", 
+    list("Develop the foundational geospatial data to support verson 4 of the National Water Model",
+         "Collaborate with the USGS to build a suite of tools and data products supporting the National Hydrologic Geospatial Fabric", 
+         "Lead a team developing novel Machine learning, geospaial, and cloud based solutions of more open and skilled science"),
+  
+  "Lead Data Scientist", "Urban Flooding Open Knowledge Network", "Remote", "Sep 2019 - Apr 2023", 
+    list("Co-authored two successful proposals to NSF and acted as an advocate for the team in the initial C-ACCEL program",
+      "Developed and designed a cost effective, cloud native, building level, flood forecasting system for the Continental United States."),
+  
+  "Lecturer", "Geography Department", "UC Santa Barbara", "2021", 
+    list("Designed and taught the first programming based GIS course for UCSB in R."),
+  
+  "Course Coordinator", "NOAA Office of Water Prediction", "Tuscaloosa, AL", "2016", 
+    list("Lead students towards the successful execution of projects related to the National Water Model
+Research Fellow",
+   "Worked at the National Water Center in advancement of the National Water Model"),
+  
+  "Graduate Student", "Visiting Researcher", "", "", 
+    list("\\textbf{Institute for Environmental Studies}. Vrije Universiteit, Amsterdam: June - July 2019; January - March 2018", 
+         "\\textbf{Research Applications Laboratory. NCAR}, Boulder, Colorado: August - September 2018",
+         "\\textbf{NOAA National Water Center}. Tuscaloosa, Alabama: Summers of 2016.2017")
+
+) %>% 
+  detailed_entries(role, dates, company, loc, details)
+```
+
+# Education
+
+```{r education}
+tribble(
+  ~ degree, ~ uni, ~ loc, ~ dates, ~ details,
+  "PhD in Geography", "University of California, Santa Barbara", "Santa Barbara, CA", "2021", 
+    list("\\textbf{Advisor}: Dr. Keith C. Clarke",
+         "\\textbf{Committee}: Hugo Loaiciga, Kelly Caylor, David Blodgett",
+         "\\textbf{Title}: The Role of Spatial Data Science in Continental Scale Hydrology: Twelve Case Studies in Data Models, Data Structures, Modeling, and Evaluation"),
+
+  "BS in Anthropology & Geography, Cum Laude", "California Polytechnic State University", "San Luis Obispo, CA", "2010 - 2015", 
+    list("Recipient of the Outstanding Senior Award",
+         "\\textbf{Minors}: \\textbf{(1)} GIS for Agriculture \\textbf{(2)} Water Science (Watershed Management) \\textbf{(3)} Statistics \\textbf{(4)} Economics \\textbf{(5)} Environmental Studies")
+) %>% 
+  detailed_entries(what = degree, 
+                   when = dates, 
+                   with = uni, 
+                   where = loc, 
+                   why = details)
+```
+
+# Publications
+
+\textcolor{cyan}{ \href{https://tinyurl.com/mike-google-scholar}{\faicon{google} Google Scholar: `r mike_gs$total_cites` citations; \faicon{user} `r length(mike_gs$coauthors)` collaborators; \faicon{file} `r nrow(cites)` papers} \newline
+\textbf{h-index} `r mike_gs$h_index`; \textbf{i-index} `r mike_gs$i10_index`}
+
+```{r}
+data = cites  %>%
+  mutate(bibtype = "article")
+  # arrange(-year) %>%
+  # mutate(author = gsub("J Johnson", "JM Johnson", author),
+  #        author = gsub("JM Johnson", "JM Johnson", author),
+  #        author = gsub("Johnson, J", "JM Johnson", author),
+  #        author = gsub("Johnson, J. Michael", "JM Johnson", author),
+  #        title  = gsub("Ogc", "OGC", title),
+  #        #itle  = gsub("HY_Features", "HY Features", title),
+  #        #title  = stringr::str_to_title(title),
+  #
+  #        journal  = stringr::str_to_title(journal),
+  #        bibtype = "article")
+
+  as.BibEntry(data) %>%
+  WriteBib("mike-gs.bib")
+
+bibliography_entries("mike-gs.bib") %>%
+  arrange(desc(issued))
+
+```
+
+# Grants and Fellowships
+
+\textcolor{cyan}{I have personally solicited \textbf{\`r personal`} for research and development and been a core member of teams who have solicited \textbf{\`r team`}.}
+
+```{r}
+funds %>%
+  mutate(amount = ifelse(is.na(amount2) | amount2 == 0,
+                         amount,
+                         paste0(amount, " (Subaward: ", amount2, ")"))) %>% 
+  detailed_entries(what  = source, 
+                   when  = date,
+                   with  = name, 
+                   where = amount)
+```
+
+# Teaching experience
+
+## University Teaching
+
+```{r}
+tribble(
+  ~ class, ~ uni, ~ loc, ~ dates, ~ details,
+  "Introduction to Geoinformatics", "University of California, Santa Barbara, California", "Santa Barbara, CA", "2021", 
+    list("Independently developed and taught to address the growing need for data science in the GIS profession.",
+         "Intended to become prerequisite course for the UCSB Geography Department and Masters in GIS Curriculum",
+         "\\href{https://mikejohnson51.github.io/spds/}{Open course content available here}")) %>% 
+  detailed_entries(what = uni, 
+                   when = dates, 
+                   with = class, 
+                   where = loc, 
+                   why = details)
+```
+
+## Teaching Assistant
+
+```{r}
+read_excel("mikes-data.xlsx", sheet = "teaching") %>% 
+  filter(type == "Teaching Assisstant")  %>%
+  mutate(quarter = factor(quarter, levels = c("Fall", "Winter", "Spring", "Summer"), 
+                          ordered = T),
+         class_link = ifelse(is.na(link), class, 
+                             paste0('<a href="',link, '">', class, '</a>'))) %>% 
+  group_by(class) %>%
+  mutate(points = as.numeric(year) + as.numeric(quarter)/10,
+         professor = paste(unique(professor), collapse = ", ")) %>% 
+  summarise(year = paste(year,collapse=', '), 
+            points = max(points),
+            professor = professor[1],
+            division = division[1]) %>% 
+  unite(data, year, sep = " ") %>% 
+  arrange(desc(points)) %>% 
+  detailed_entries(professor, division, class, data)
+```
+
+## Award Nominations
+
+```{r}
+read_excel("mikes-data.xlsx", sheet = "teaching_awards") %>% 
+  group_by(name) %>% 
+  mutate(year = paste(year, collapse=', ')) %>% 
+  slice(1) %>% 
+  select(-sort, -source) %>% 
+  detailed_entries(when = year, with = name)
+```
+# Open Source Software
+
+\textcolor{cyan}{\href{https://github.com/mikejohnson51}{\faicon{github} Github: \faicon{user} `r f` followers; \faicon{star} `r s` stars}}
+
+```{r}
+tribble(
+  ~ pkg, ~ role, ~ details,
+  "\\href{https://github.com/mikejohnson51/AOI}{AOI}", "Lead Developer", "Fast and flexible geocoding and AOI creation.",
+
+  "\\href{https://github.com/mikejohnson51/climateR}{climateR}", "Lead developer", "Instant access to gridded and observation climate data.",
+
+  "\\href{https://github.com/mikejohnson51/climateR-catalogs}{climateR-catalogs}", "Lead developer", "A consistent federated data catalog for programmatic access.",
+
+  "\\href{https://github.com/mikejohnson51/zonal}{zonal}", "Lead developer", "Fast, flexable spatial data summarization.",
+
+  "\\href{https://github.com/mikejohnson51/nwmTools}{nwmTools}",  "Lead developer", "National Water Model Streamflow access.",
+
+  "\\href{https://github.com/doi-usgs/nhdplusTools}{DOI-USGS/nhdplusTools}",  "Author", "Manipulating hydrographic data with the NHDPlus data model.",
+
+  "\\href{https://github.com/doi-usgs/dataRetrieval}{DOI-USGS/dataRetrieval}",  "Author", "R Interface to the USGS data holdings.",
+
+  "\\href{https://github.com/doi-usg/hyRefactor}{DOI-USGS/hyRefactor}",  "Author", "Manipulating the NHDPlus Network for Hydrologic Modeling.",
+
+  "\\href{https://github.com/NOAA-OWP/hydrofabricI}{NOAA-OWP/hydrofabric}", "Lead Developer", "Generating data products for continental scale hydrology",
+) %>%
+ detailed_entries(when = role, 
+                  with = pkg,
+                  what = details, 
+                  .protect = FALSE)
+```

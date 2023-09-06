@@ -1,0 +1,397 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for CV/Resume
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+%
+% Adapted to be an Rmarkdown template by Mitchell O'Hara-Wild
+% 23 November 2018
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt,a4paper,]{awesome-cv}
+
+% Configure page margins with geometry
+\usepackage{geometry}
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+
+% Specify the location of the included fonts
+\fontdir[fonts/]
+
+% Color for highlights
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+
+\definecolor{awesome}{HTML}{414141}
+
+% Colors for text
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\def\endfirstpage{\newpage}
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%	Comment any of the lines below if they are not required
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+
+\name{Dr.~J Michael}{Johnson}
+
+\position{Data Scientist \textbar{} Geographer \textbar{} Water
+Resources}
+\address{Fort Collins, Colorado}
+
+\email{\href{mailto:jjohnson@lynker.com}{\nolinkurl{jjohnson@lynker.com}}}
+\homepage{mikejohnson51.github.io}
+\googlescholar{MrXM9cgAAAAJ}
+\github{mikejohnson51}
+
+% \gitlab{gitlab-id}
+% \stackoverflow{SO-id}{SO-name}
+% \skype{skype-id}
+% \reddit{reddit-id}
+
+\quote{I am a \textbf{water resource data scientist} at
+\href{https://lynker-intel.com/}{Lynker} leading the
+\textbf{hydrofabric development for NOAA's Next Generation National Water Model}
+along with the federal efforts to define a national suite of
+hydroinformatic data products. I seek to bridge
+\textbf{data-intensive computational geography} with
+\textbf{water resources research} and develop open-source software to
+ease community access to big data.}
+
+\usepackage{booktabs}
+
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%------------------------------------------------------------------------------
+
+
+
+% Pandoc CSL macros
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{2em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\honortitlestyle{#1}}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\honordatestyle{#1}}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\begin{document}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+% 2019-02-14 Chris Umphlett - add flexibility to the document name in footer, rather than have it be static Curriculum Vitae
+\makecvfooter
+  {September, 2023}
+    {Dr.~J Michael Johnson~~~·~~~Curriculum Vitae}
+  {\thepage}
+
+
+%-------------------------------------------------------------------------------
+%	CV/RESUME CONTENT
+%	Each section is imported separately, open each file in turn to modify content
+%------------------------------------------------------------------------------
+
+
+
+\hypertarget{employment}{%
+\section{Employment}\label{employment}}
+
+\begin{cventries}
+    \cventry{Data Scientist}{Lynker}{Fort Collins, Colorado}{August 2020 - Present}{\begin{cvitems}
+\item Lead the spatial data development for the NOAA NextGen Water Resource Modeling Framework
+\item Contribute to local and state level consulting projects related to water resource managment and hazard mitigation
+\item Recruit, retain, and mentor a strong and diverse group of data scientists
+\end{cvitems}}
+    \cventry{Hydrofabric Technical Director}{NOAA Office of Water Prediction}{Remote}{Sep 2022 - Present}{\begin{cvitems}
+\item Develop the foundational geospatial data to support verson 4 of the National Water Model
+\item Collaborate with the USGS to build a suite of tools and data products supporting the National Hydrologic Geospatial Fabric
+\item Lead a team developing novel Machine learning, geospaial, and cloud based solutions of more open and skilled science
+\end{cvitems}}
+    \cventry{Lead Data Scientist}{Urban Flooding Open Knowledge Network}{Remote}{Sep 2019 - Apr 2023}{\begin{cvitems}
+\item Co-authored two successful proposals to NSF and acted as an advocate for the team in the initial C-ACCEL program
+\item Developed and designed a cost effective, cloud native, building level, flood forecasting system for the Continental United States.
+\end{cvitems}}
+    \cventry{Lecturer}{Geography Department}{UC Santa Barbara}{2021}{\begin{cvitems}
+\item Designed and taught the first programming based GIS course for UCSB in R.
+\end{cvitems}}
+    \cventry{Course Coordinator}{NOAA Office of Water Prediction}{Tuscaloosa, AL}{2016}{\begin{cvitems}
+\item Lead students towards the successful execution of projects related to the National Water Model
+Research Fellow
+\item Worked at the National Water Center in advancement of the National Water Model
+\end{cvitems}}
+    \cventry{Graduate Student}{Visiting Researcher}{}{}{\begin{cvitems}
+\item \textbf{Institute for Environmental Studies}. Vrije Universiteit, Amsterdam: June - July 2019; January - March 2018
+\item \textbf{Research Applications Laboratory. NCAR}, Boulder, Colorado: August - September 2018
+\item \textbf{NOAA National Water Center}. Tuscaloosa, Alabama: Summers of 2016.2017
+\end{cvitems}}
+\end{cventries}
+
+\hypertarget{education}{%
+\section{Education}\label{education}}
+
+\begin{cventries}
+    \cventry{PhD in Geography}{University of California, Santa Barbara}{Santa Barbara, CA}{2021}{\begin{cvitems}
+\item \textbf{Advisor}: Dr. Keith C. Clarke
+\item \textbf{Committee}: Hugo Loaiciga, Kelly Caylor, David Blodgett
+\item \textbf{Title}: The Role of Spatial Data Science in Continental Scale Hydrology: Twelve Case Studies in Data Models, Data Structures, Modeling, and Evaluation
+\end{cvitems}}
+    \cventry{BS in Anthropology \& Geography, Cum Laude}{California Polytechnic State University}{San Luis Obispo, CA}{2010 - 2015}{\begin{cvitems}
+\item Recipient of the Outstanding Senior Award
+\item \textbf{Minors}: \textbf{(1)} GIS for Agriculture \textbf{(2)} Water Science (Watershed Management) \textbf{(3)} Statistics \textbf{(4)} Economics \textbf{(5)} Environmental Studies
+\end{cvitems}}
+\end{cventries}
+
+\hypertarget{publications}{%
+\section{Publications}\label{publications}}
+
+\textcolor{cyan}{ \href{https://tinyurl.com/mike-google-scholar}{\faicon{google} Google Scholar: 375 citations; \faicon{user} 20 collaborators; \faicon{file} 22 papers} \newline
+\textbf{h-index} 9; \textbf{i-index} 8}
+
+\hypertarget{bibliography}{}
+\leavevmode\vadjust pre{\hypertarget{ref-17}{}}%
+Blodgett, D., \& \textbf{Johnson, J.} (2023). Hydrologic modeling and
+river corridor applications of HY\_features concepts. \emph{OGC Public
+Engineering Report}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-16}{}}%
+Blodgett, D., \textbf{Johnson, J.}, \& Andy, B. (2023). Generating a
+reference flow network with improved connectivity to support durable
+data integration and reproducibility in the coterminous US.
+\emph{Environmental Modelling \& Software}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-21}{}}%
+Fang, S., \textbf{Johnson, J.}, Yeghiazarian, L., \& Sankarasubramanian,
+A. (2023). Improved national-scale flood prediction for gauged and
+ungauged basins using a spatio-temporal hierarchical model.
+\emph{Authorea Preprints}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-18}{}}%
+Kohanpur, A., Saksena, S., Dey, S., \textbf{Johnson, J.}, Riasi, M.,
+Yeghiazarian, L., \& \ldots. (2023). Urban flood modeling: Uncertainty
+quantification and physics‐informed gaussian processes regression
+forecasting. \emph{Water Resources Research}, \emph{59 (3),
+e2022WR033939}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-20}{}}%
+Montello, D., Davis, R., \textbf{Johnson, J.}, \& Chrastil, E. (2023).
+The symmetry and asymmetry of pedestrian route choice. \emph{Journal of
+Environmental Psychology}, \emph{102004}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-19}{}}%
+\textbf{Johnson, J.}, Coll, J., Clarke, K., Afshari, S., Saksena, S., \&
+Yeghiazarian, L. (2022). Determining feature based hydraulic geometry
+and rating curves using a physically based, computationally efficient
+framework. \emph{Preprints}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-10}{}}%
+\textbf{Johnson, J.}, Narock, T., Singh-Mohudpur, J., Fils, D., Clarke,
+K., Saksena, S., \& \ldots. (2022). Knowledge graphs to support
+real-time flood impact evaluation. \emph{AI Magazine}, \emph{43 (1),
+40-45}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-11}{}}%
+\textbf{Johnson, J.}, \& Clarke, K. (2021). An area preserving method
+for improved categorical raster resampling. \emph{Cartography and
+Geographic Information Science}, \emph{48 (4), 292-304}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-13}{}}%
+Blodgett, D., \textbf{Johnson, J.}, Sondheim, M., Wieczorek, M., \&
+Frazier, N. (2020). Mainstems: A logical data model implementing
+mainstem and drainage basin feature types based on WaterML2 part 3: HY
+features concepts. \emph{Environmental Modelling \& Software},
+\emph{135, 104927}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-5}{}}%
+Clarke, K., \& \textbf{Johnson, J.} (2020). Calibrating SLEUTH with big
+data: Projecting california's land use to 2100. \emph{Computers,
+Environment and Urban Systems}, \emph{83, 101525}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-6}{}}%
+Wens, M., Veldkamp, T., Mwangi, M., \textbf{Johnson, J.}, Lasage, R.,
+Haer, T., \& \ldots. (2020). Simulating small-scale agricultural
+adaptation decisions in response to drought risk: An empirical
+agent-based model for semi-arid kenya. \emph{Frontiers in Water},
+\emph{2, 15}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-4}{}}%
+Clarke, K., \textbf{Johnson, J.}, \& Trainor, T. (2019). Contemporary
+american cartographic research: A review and prospective.
+\emph{Cartography and Geographic Information Science}, \emph{46 (3),
+196-209}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-2}{}}%
+\textbf{Johnson, J.}, Munasinghe, D., Eyelade, D., \& Cohen, S. (2019).
+An integrated evaluation of the national water model (NWM) height above
+nearest drainage (HAND) flood mapping methodology. \emph{Natural Hazards
+and Earth System Sciences (NHESS)}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-3}{}}%
+\textbf{Johnson, J.}, Wens, M., Zagaria, C., \& Veldkamp, T. (2019).
+Integrating human behavior dynamics into drought risk assessment---a
+sociohydrologic, agent‐based approach. \emph{Wiley Interdisciplinary
+Reviews: Water, e}, \emph{e1345}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-8}{}}%
+Blodgett, D., \& \textbf{Johnson, J.} (2018). nhdplusTools: Tools for
+accessing and working with the NHDPlus. \emph{Avaiable from
+Https://Code. Usgs. Gov/Water/nhdplusTools}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-1}{}}%
+De Cicco, L., Lorenz, D., Hirsch, R., Watkins, W., \&
+\textbf{Johnson, J.} (2018). dataRetrieval: R packages for discovering
+and retrieving water data available from US federal hydrologic web
+services. \emph{US Geological Survey, Reston, VA, Https://Doi. Org/},
+\emph{/10.5066/P9X4L3GE}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-9}{}}%
+\textbf{Johnson, J.}, Coll, J., Ruess, P., \& Hastings, J. (2018).
+Challenges and opportunities for creating intelligent hazard alerts: The
+{``FloodHippo''} prototype. \emph{JAWRA Journal of the American Water
+Resources Association}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-7}{}}%
+Lo'aiciga, H., \& \textbf{Johnson, J.} (2018). Infiltration on sloping
+terrain and its role on runoff generation and slope stability.
+\emph{Journal of Hydrology}, \emph{561, 584-597}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-15}{}}%
+\textbf{Johnson, J.}, Coll, J., Cohen, S., Nelson, J., Ogden, F.,
+Praskievicz, S., \& \ldots. (2017). National water center innovators
+program summer institute report 2017. \emph{Consortium of Universities
+for the Advancement of Hydrologic Science, Inc.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-12}{}}%
+\textbf{Johnson, J.}, \& Lo'aiciga, H. (2017). Coupled infiltration and
+kinematic-wave runoff simulation in slopes: Implications for slope
+stability. \emph{Water}, \emph{9 (5), 327}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-22}{}}%
+Coll, J., \textbf{Johnson, J.}, \& Ruess, P. (2016). Radar measurement
+and flow modeling: methods. \emph{NATIONAL WATER CENTER INNOVATORS
+PROGRAM SUMMER INSTITUTE REPORT}, \emph{2016 4, 7}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-14}{}}%
+\textbf{Johnson, J.}, Ruess, P., \& Coll, J. (2016). OPERA--operational
+platform for emergency response and awareness: Reimagining disaster
+alerts. \emph{NATIONAL WATER CENTER INNOVATORS PROGRAM SUMMER INSTITUTE
+REPORT}, \emph{2016 4, 97}.
+
+\hypertarget{grants-and-fellowships}{%
+\section{Grants and Fellowships}\label{grants-and-fellowships}}
+
+\textcolor{cyan}{I have personally solicited \textbf{\$436,000} for research and development and been a core member of teams who have solicited \textbf{\$19,277,519}.}
+
+\begin{cventries}
+    \cventry{NOAA Office of Water Prediction}{NOAA OWP Geospatial Services}{\$8,000,000}{2023-2025}{}\vspace{-4.0mm}
+    \cventry{NOAA Office of Water Prediction}{NOAA OWP Next Generation Water Resource Modeling Framework Development}{\$7,300,000}{2022-2024}{}\vspace{-4.0mm}
+    \cventry{Earth Science Information Partners}{Increasing Environmental Data Access through a more robust federated data catalog and extending the climateR model to Python }{\$6,000}{2023}{}\vspace{-4.0mm}
+    \cventry{Earth Science Information Partners}{Machine Learning for Flood Risk Assessment}{\$20,000}{2022}{}\vspace{-4.0mm}
+    \cventry{National Science Foundation}{The UFOKN: Delivering Flood Information to AnyOne, AnyTime, AnyWhere}{\$2,853,561 (Subaward: \$240,000)}{2020-2022}{}\vspace{-4.0mm}
+    \cventry{National Science Foundation}{Convergence Accelerator Phase I (RAISE): The Urban Flooding Open Knowledge Network (UFOKN)}{\$1,027,958 (Subaward: \$100,000)}{2019-2020}{}\vspace{-4.0mm}
+    \cventry{UCAR COMET}{A National Water Model R Package: Improving access and application of model output}{\$15,000}{2018-2019}{}\vspace{-4.0mm}
+    \cventry{UCAR COMET}{FOSSFlood: The LivingFlood Application Built on Free Open Source Software}{\$5,000}{2017-2018}{}\vspace{-4.0mm}
+    \cventry{UCGHI Planetary Health Seed Grant}{Integrating farmers’ adaptive behaviors in California’s Central Valley to assess water and food security risks under climate change}{\$10,000}{2017-2018}{}\vspace{-4.0mm}
+    \cventry{CUAHSI}{CUAHSI HydroInformatics Fellowship}{\$5,000}{2020-2021}{}\vspace{-4.0mm}
+    \cventry{Jack and Laura Dangermond}{Jack and Laura Dangermond GIS Fellow in Residence}{\$5,000}{2019-2020}{}\vspace{-4.0mm}
+    \cventry{University of California Regents}{Disciplines Fellowship}{\$30,000}{2015-2016}{}\vspace{-4.0mm}
+\end{cventries}
+
+\hypertarget{teaching-experience}{%
+\section{Teaching experience}\label{teaching-experience}}
+
+\hypertarget{university-teaching}{%
+\subsection{University Teaching}\label{university-teaching}}
+
+\begin{cventries}
+    \cventry{University of California, Santa Barbara, California}{Introduction to Geoinformatics}{Santa Barbara, CA}{2021}{\begin{cvitems}
+\item Independently developed and taught to address the growing need for data science in the GIS profession.
+\item Intended to become prerequisite course for the UCSB Geography Department and Masters in GIS Curriculum
+\item \href{https://mikejohnson51.github.io/spds/}{Open course content available here}
+\end{cvitems}}
+\end{cventries}
+
+\hypertarget{teaching-assistant}{%
+\subsection{Teaching Assistant}\label{teaching-assistant}}
+
+\begin{cventries}
+    \cventry{Dr. Vena Chu, Alana Ayasse}{Remote Sensing of the Environment 2}{2021, 2020}{Upper-Division}{}\vspace{-4.0mm}
+    \cventry{Dr. Catherine Gautier}{Living with Global Warming}{2020, 2019, 2018, 2016}{Lower-Division}{}\vspace{-4.0mm}
+    \cventry{Dr. Krzysztof Janowicz}{Conceptual Modeling and Programming for the Geo-Sciences}{2020, 2019, 2017}{Upper-Division and Graduate}{}\vspace{-4.0mm}
+    \cventry{Dr. Joe McFadden}{Remote Sensing of the Environment 1}{2020}{Upper-Division}{}\vspace{-4.0mm}
+    \cventry{Dr. Vena Chu}{Remote Sensing of the Environment 3}{2019}{Upper-Division}{}\vspace{-4.0mm}
+    \cventry{Dr. Werner Kuhn, Dr. Keith Clarke}{Maps and Spatial Reasoning}{2019, 2018, 2017}{Lower-Division}{}\vspace{-4.0mm}
+    \cventry{Dr. Keith Clarke}{Cartographic Design and Geovisualization}{2018}{Upper-Division}{}\vspace{-4.0mm}
+    \cventry{Dr. Hugo Loaiciga}{Environmental Water Quality}{2017}{Upper-Division}{}\vspace{-4.0mm}
+    \cventry{Dr. Tim DeVeries}{Oceans and Atmosphere}{2016}{Lower-Division}{}\vspace{-4.0mm}
+\end{cventries}
+
+\hypertarget{award-nominations}{%
+\subsection{Award Nominations}\label{award-nominations}}
+
+\begin{cventries}
+    \cventry{}{Nominated for UCSB GSA Excellence in Teaching by students}{}{2020, 2019}{}\vspace{-4.0mm}
+    \cventry{}{Nominated for UCSB Geography Excellence in Teaching by faculty member}{}{2020, 2019}{}\vspace{-4.0mm}
+\end{cventries}
+
+\hypertarget{open-source-software}{%
+\section{Open Source Software}\label{open-source-software}}
+
+\textcolor{cyan}{\href{https://github.com/mikejohnson51}{\faicon{github} Github: \faicon{user} 178 followers; \faicon{star} 525 stars}}
+
+\begin{cventries}
+    \cventry{Fast and flexible geocoding and AOI creation.}{\href{https://github.com/mikejohnson51/AOI}{AOI}}{}{Lead Developer}{}\vspace{-4.0mm}
+    \cventry{Instant access to gridded and observation climate data.}{\href{https://github.com/mikejohnson51/climateR}{climateR}}{}{Lead developer}{}\vspace{-4.0mm}
+    \cventry{A consistent federated data catalog for programmatic access.}{\href{https://github.com/mikejohnson51/climateR-catalogs}{climateR-catalogs}}{}{Lead developer}{}\vspace{-4.0mm}
+    \cventry{Fast, flexable spatial data summarization.}{\href{https://github.com/mikejohnson51/zonal}{zonal}}{}{Lead developer}{}\vspace{-4.0mm}
+    \cventry{National Water Model Streamflow access.}{\href{https://github.com/mikejohnson51/nwmTools}{nwmTools}}{}{Lead developer}{}\vspace{-4.0mm}
+    \cventry{Manipulating hydrographic data with the NHDPlus data model.}{\href{https://github.com/doi-usgs/nhdplusTools}{DOI-USGS/nhdplusTools}}{}{Author}{}\vspace{-4.0mm}
+    \cventry{R Interface to the USGS data holdings.}{\href{https://github.com/doi-usgs/dataRetrieval}{DOI-USGS/dataRetrieval}}{}{Author}{}\vspace{-4.0mm}
+    \cventry{Manipulating the NHDPlus Network for Hydrologic Modeling.}{\href{https://github.com/doi-usg/hyRefactor}{DOI-USGS/hyRefactor}}{}{Author}{}\vspace{-4.0mm}
+    \cventry{Generating data products for continental scale hydrology}{\href{https://github.com/NOAA-OWP/hydrofabricI}{NOAA-OWP/hydrofabric}}{}{Lead Developer}{}\vspace{-4.0mm}
+\end{cventries}
+
+
+
+\end{document}
