@@ -1,0 +1,36 @@
+on:
+  schedule:
+    - cron: '0  1 * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+name: CV referesh
+
+jobs:
+  render-rmarkdown:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
+
+      - name: Install packages, render Rmarkdown CV file and Commit Results
+        run: |
+          echo "Rendering the page..."
+          Rscript -e 'install.packages(c("knitr", "rmarkdown"))'
+          Rscript -e 'rmarkdown::render(input = "CV.Rmd")'
+          if [[ "$(git status --porcelain)" != "" ]]; then
+            git config --local user.name "$GITHUB_ACTOR"
+            git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            git add *
+            git commit -m "Auto update CV"
+            git push origin
+          fi
