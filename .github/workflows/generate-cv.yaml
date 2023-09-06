@@ -25,7 +25,7 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache-version: 2
-          packages-packages: |
+          extra-packages: |
             any::knitr
             any::rmarkdown
             any::scholar
@@ -49,3 +49,18 @@ jobs:
             git commit -m "Auto update CV"
             git push origin
           fi
+
+      - name: Get current release
+        id: date
+        run: echo "CURRENT_RELEASE=$(date +'%B-%Y')" >> "$GITHUB_OUTPUT"
+
+      - name: Create CV release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: CV ${{ steps.date.outputs.CURRENT_RELEASE }} Release
+          tag_name: ${{ steps.date.outputs.CURRENT_RELEASE }}
+          files: |
+            CV.pdf
+            CV.Rmd
+            mike-gs.bib
+
