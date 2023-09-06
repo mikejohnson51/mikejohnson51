@@ -23,8 +23,8 @@ jobs:
 
       - name: Setup R Dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
-          with:
-            packages: knitr, rmarkdown, scholar, vitae, stringr, readr, RefManageR, tidyr, dplyr, gsheet
+        with:
+          packages: knitr, rmarkdown, scholar, vitae, stringr, readr, RefManageR, tidyr, dplyr, gsheet
 
       - name: Install packages, render Rmarkdown CV file and Commit Results
         run: |
