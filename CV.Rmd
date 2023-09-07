@@ -11,7 +11,7 @@ www: mikejohnson51.github.io
 github: mikejohnson51
 fontawesome: yes
 docname: Curriculum Vitae
-aboutme: I am a \textbf{water resource data scientist} at [Lynker](https://lynker-intel.com/) leading the \textbf{hydrofabric development for NOAA's Next Generation National Water Model} along with the federal efforts to define a national suite of hydroinformatic data products. I seek to bridge \textbf{data-intensive computational geography} with \textbf{water resources research} and develop open-source software to ease community access to big data.
+aboutme: I am a \textcolor{cyan}{\textbf{water resource data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts to define a national suite of hydroinformatic data products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} and develop open-source software to ease community access to big data and design new data products.
 headcolor: 414141
 csl: apa-cv.csl
 output: 
@@ -112,6 +112,7 @@ tribble(
                    where = loc, 
                    why = details)
 ```
+\newpage
 
 # Publications
 
@@ -234,4 +235,37 @@ tribble(
                   with = pkg,
                   what = details, 
                   .protect = FALSE)
+```
+
+\newpage
+
+# Select Invited Workshops and Presentations
+
+```{r}
+xx = gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuUJpTRtTio0gMO06o/edit#gid=766326727') %>% 
+  mutate(Details = ifelse(is.na(Details), character(), Details)) %>% 
+  tidyr::separate_longer_delim(Details, "SPLIT") %>% 
+  group_by(Title) %>% 
+  mutate(Details = list(as.list(Details))) %>% 
+  slice(1) %>% 
+  ungroup() 
+
+ind = list()
+
+for(i in 1:nrow(xx)){
+  ind[[i]] = sum(is.na(unlist(xx$Details[[i]]))) == length(unlist(xx$Details[[i]]))
+}
+
+ind = which(unlist(ind))
+
+for(i in 1:length(ind)){ xx$Details[[ind[i]]] = character() }
+
+detailed_entries(xx, 
+                 what  = Venue, 
+                 when  = Type, 
+                 with  = Title, 
+                 where = Date, 
+                 why   = Details,
+                 .protect = TRUE)
+
 ```
