@@ -36,9 +36,9 @@ gs_id = 'MrXM9cgAAAAJ'
 mike_gs = get_profile(gs_id) 
 
 cites = get_publications(gs_id) %>% 
-   filter(!grepl("AGU|EGU|Fall Meeting", journal)) %>%
+   filter(!grepl("AGU|EGU|Fall Meeting|Preprint|SUMMER INSTITUTE", journal)) %>%
    filter(journal != "")
-
+   
 follow = readLines('https://img.shields.io/github/followers/mikejohnson51?label=follow&style=social')
 f = str_match(follow, "<title>Follow: \\s*(.*?)\\s*</title>")[,2]
 
@@ -60,7 +60,7 @@ team = paste0("$", formatC(as.numeric(team), format="f", digits=0, big.mark=",")
 ```{r consulting}
 tribble(
   ~ role, ~ company, ~ loc, ~ dates, ~ details,
-  "Data Scientist", "Lynker", "Fort Collins, Colorado", "August 2020 - Present", 
+  "Water Resources Data Scientist", "Lynker", "Fort Collins, Colorado", "August 2020 - Present", 
     list("Lead the spatial data development for the NOAA NextGen Water Resource Modeling Framework",
          "Contribute to local and state level consulting projects related to water resource managment and hazard mitigation",
          "Recruit, retain, and mentor a strong and diverse group of data scientists"
@@ -134,13 +134,15 @@ data = cites  %>%
   #        journal  = stringr::str_to_title(journal),
   #        bibtype = "article")
 
-  as.BibEntry(data) %>%
+as.BibEntry(data) %>%
   WriteBib("mike-gs.bib")
 
 bibliography_entries("mike-gs.bib") %>%
   arrange(desc(issued))
 
 ```
+
+\newpage 
 
 # Grants and Fellowships
 
@@ -236,8 +238,6 @@ tribble(
                   what = details, 
                   .protect = FALSE)
 ```
-
-\newpage
 
 # Select Invited Workshops and Presentations
 
