@@ -1,7 +1,7 @@
 ---
 name: Dr. J Michael
 surname: Johnson
-position: 'Data Scientist | Geographer | Water Resources'
+position: 'Geographer | Data Scientist | Water Resources'
 address: Fort Collins, Colorado
 date: "`r format(Sys.time(), '%B, %Y')`"
 qualifications: PhD
@@ -11,7 +11,7 @@ www: mikejohnson51.github.io
 github: mikejohnson51
 fontawesome: yes
 docname: Curriculum Vitae
-aboutme: I am a \textcolor{cyan}{\textbf{water resource data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts to define a national suite of hydroinformatic data products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} and develop open-source software to ease community access to big data and design new data products.
+aboutme: I am a \textcolor{cyan}{\textbf{water resource data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts to define a national suite of hydroinformatic data products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} and develop open-source software to design new data products and ease community access to big geospatial data.
 headcolor: 414141
 csl: apa-cv.csl
 output: 
@@ -60,7 +60,11 @@ team = paste0("$", formatC(as.numeric(team), format="f", digits=0, big.mark=",")
 ```{r consulting}
 tribble(
   ~ role, ~ company, ~ loc, ~ dates, ~ details,
-  "Water Resources Data Scientist", "Lynker", "Fort Collins, Colorado", "August 2020 - Present", 
+  
+  "Chief Data Scientist/ Pod Lead", "Lynker", "Fort Collins, Colorado", "Sep 2023 - Present", 
+    character(),
+  
+  "Water Resources Data Scientist", "", "", "Aug 2020 - Sep 2023", 
     list("Lead the spatial data development for the NOAA NextGen Water Resource Modeling Framework",
          "Contribute to local and state level consulting projects related to water resource managment and hazard mitigation",
          "Recruit, retain, and mentor a strong and diverse group of data scientists"
@@ -69,10 +73,13 @@ tribble(
   "Hydrofabric Technical Director", "NOAA Office of Water Prediction", "Remote", "Sep 2022 - Present", 
     list("Develop the foundational geospatial data to support verson 4 of the National Water Model",
          "Collaborate with the USGS to build a suite of tools and data products supporting the National Hydrologic Geospatial Fabric", 
-         "Lead a team developing novel Machine learning, geospaial, and cloud based solutions of more open and skilled science"),
+         "Lead a team developing novel Machine learning, geospatial, and cloud based solutions of more open and skilled science"),
   
-  "Lead Data Scientist", "Urban Flooding Open Knowledge Network", "Remote", "Sep 2019 - Apr 2023", 
-    list("Co-authored two successful proposals to NSF and acted as an advocate for the team in the initial C-ACCEL program",
+  "Lead Hydrofabric Developer", "", "", "Aug 2020 - Sep 2022", 
+   character(),
+  
+  "Lead Data Scientist", "Urban Flooding Open Knowledge Network", "Independent Contractor", "Sep 2019 - Apr 2023", 
+    list("Co-authored successful proposals to NSF and acted as an advocate for the team in the initial C-ACCEL program",
       "Developed and designed a cost effective, cloud native, building level, flood forecasting system for the Continental United States."),
   
   "Lecturer", "Geography Department", "UC Santa Barbara", "2021", 
@@ -84,7 +91,7 @@ Research Fellow",
    "Worked at the National Water Center in advancement of the National Water Model"),
   
   "Graduate Student", "Visiting Researcher", "", "", 
-    list("\\textbf{Institute for Environmental Studies}. Vrije Universiteit, Amsterdam: June - July 2019; January - March 2018", 
+    list("\\textbf{Institute for Environmental Studies. Vrije Universiteit}, Amsterdam, Netherlands: June - July 2019; January - March 2018", 
          "\\textbf{Research Applications Laboratory. NCAR}, Boulder, Colorado: August - September 2018",
          "\\textbf{NOAA National Water Center}. Tuscaloosa, Alabama: Summers of 2016.2017")
 
@@ -102,14 +109,15 @@ tribble(
          "\\textbf{Committee}: Hugo Loaiciga, Kelly Caylor, David Blodgett",
          "\\textbf{Title}: The Role of Spatial Data Science in Continental Scale Hydrology: Twelve Case Studies in Data Models, Data Structures, Modeling, and Evaluation"),
 
-  "BS in Anthropology & Geography, Cum Laude", "California Polytechnic State University", "San Luis Obispo, CA", "2010 - 2015", 
-    list("Recipient of the Outstanding Senior Award",
+  "BS in Anthropology & Geography", "California Polytechnic State University", "San Luis Obispo, CA", "2010 - 2015", 
+    list("Cum Laude",
+         "Recipient of the Outstanding Senior Award",
          "\\textbf{Minors}: \\textbf{(1)} GIS for Agriculture \\textbf{(2)} Water Science (Watershed Management) \\textbf{(3)} Statistics \\textbf{(4)} Economics \\textbf{(5)} Environmental Studies")
 ) %>% 
-  detailed_entries(what = degree, 
+  detailed_entries(what = loc, 
                    when = dates, 
                    with = uni, 
-                   where = loc, 
+                   where = degree, 
                    why = details)
 ```
 \newpage
@@ -161,6 +169,8 @@ funds %>%
 
 # Teaching experience
 
+\textcolor{cyan}{I have designed a upper division spatial data science course as a UCSB Lecturer, was a teaching assistant for over 15 courses (700+ students), and have lead community workshops for national organizations.}
+
 ## University Teaching
 
 ```{r}
@@ -197,6 +207,38 @@ gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuU
   arrange(desc(points)) %>% 
   detailed_entries(professor, division, class, data)
 ```
+## Workshops
+
+
+```{r}
+xx = gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuUJpTRtTio0gMO06o/edit#gid=1176238393') %>% 
+  mutate(Details = ifelse(is.na(Details), character(), Details)) %>% 
+  tidyr::separate_longer_delim(Details, "SPLIT") %>% 
+  group_by(Title) %>% 
+  mutate(Details = list(as.list(Details))) %>% 
+  slice(1) %>% 
+  ungroup() 
+
+ind = list()
+
+for(i in 1:nrow(xx)){
+  ind[[i]] = sum(is.na(unlist(xx$Details[[i]]))) == length(unlist(xx$Details[[i]]))
+}
+
+ind = which(unlist(ind))
+
+for(i in 1:length(ind)){ xx$Details[[ind[i]]] = character() }
+
+detailed_entries(xx, 
+                 what  = Venue, 
+                 when  = Type, 
+                 with  = Title, 
+                 where = Date, 
+                 why   = Details,
+                 .protect = TRUE)
+```
+
+
 
 ## Award Nominations
 
@@ -210,6 +252,9 @@ gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuU
 ```
 # Open Source Software
 
+\textcolor{cyan}{A primary output of my scientific work is open source software in personal, USGS and NOAA repositories.}
+\newline
+\newline
 \textcolor{cyan}{\href{https://github.com/mikejohnson51}{\faicon{github} Github: \faicon{user} `r f` followers; \faicon{star} `r s` stars}}
 
 ```{r}
@@ -239,7 +284,9 @@ tribble(
                   .protect = FALSE)
 ```
 
-# Select Invited Workshops and Presentations
+# Invited Presentations
+
+\textcolor{cyan}{Included are recent invited presentations at conferences, federal agency meetings, and developer conferences.}
 
 ```{r}
 xx = gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuUJpTRtTio0gMO06o/edit#gid=766326727') %>% 
