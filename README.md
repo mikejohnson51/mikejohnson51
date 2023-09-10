@@ -11,8 +11,7 @@ Hi, I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scient
   <img alt="git" src="https://img.shields.io/badge/-git-45b8d8?style=flat-square&logo=react&logoColor=white" />
 </p>
 
-<h3>My latest CV:</h3>
-<a href="CV.pdf"><b>CV</b></a>
+<h3>My latest CV (made with <a href="https://pkg.mitchelloharawild.com/vitae/">vitae</a>): <a href="CV.pdf">CV</a></h3>
 
 <h3>Open source projects</h3>
 <table>
