@@ -11,7 +11,7 @@ www: mikejohnson51.github.io
 github: mikejohnson51
 fontawesome: yes
 docname: Curriculum Vitae
-aboutme: I am a \textcolor{cyan}{\textbf{water resource data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts to define a national suite of hydroinformatic data products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} and develop open-source software to design new data products and ease community access to big geospatial data.
+aboutme: I am a \textcolor{cyan}{\textbf{geospatial data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts to define a national suite of hydroinformatic data products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} to design new data products and and develop open-source software to ease community access to big geospatial data.
 headcolor: 414141
 csl: apa-cv.csl
 output: 
@@ -65,28 +65,28 @@ tribble(
     character(),
   
   "Water Resources Data Scientist", "", "", "Aug 2020 - Sep 2023", 
-    list("Lead the spatial data development for the NOAA NextGen Water Resource Modeling Framework",
+    list("Lead spatial data development for the NOAA NextGen Water Resource Modeling Framework",
          "Contribute to local and state level consulting projects related to water resource managment and hazard mitigation",
          "Recruit, retain, and mentor a strong and diverse group of data scientists"
     ),
   
   "Hydrofabric Technical Director", "NOAA Office of Water Prediction", "Remote", "Sep 2022 - Present", 
-    list("Develop the foundational geospatial data to support verson 4 of the National Water Model",
+    list("Develop, document, and publish foundational geospatial products to support version 4 of the National Water Model",
          "Collaborate with the USGS to build a suite of tools and data products supporting the National Hydrologic Geospatial Fabric", 
-         "Lead a team developing novel Machine learning, geospatial, and cloud based solutions of more open and skilled science"),
+         "Lead a team developing novel machine learning, geospatial, and cloud based solutions of more open and skilled science"),
   
   "Lead Hydrofabric Developer", "", "", "Aug 2020 - Sep 2022", 
    character(),
   
-  "Lead Data Scientist", "Urban Flooding Open Knowledge Network", "Independent Contractor", "Sep 2019 - Apr 2023", 
+  "Lead Data Scientist (Independent Contractor)", "Urban Flooding Open Knowledge Network", "Remote", "Nov 2019 - Apr 2023", 
     list("Co-authored successful proposals to NSF and acted as an advocate for the team in the initial C-ACCEL program",
       "Developed and designed a cost effective, cloud native, building level, flood forecasting system for the Continental United States."),
   
-  "Lecturer", "Geography Department", "UC Santa Barbara", "2021", 
-    list("Designed and taught the first programming based GIS course for UCSB in R."),
+  "Lecturer", "Geography Department", "UC Santa Barbara", "Summer 2020, 2021", 
+    list("Designed and taught the first programming based GIS course for UC Santa Barbara in R."),
   
-  "Course Coordinator", "NOAA Office of Water Prediction", "Tuscaloosa, AL", "2016", 
-    list("Lead students towards the successful execution of projects related to the National Water Model
+  "Research Coordinator", "NOAA Office of Water Prediction", "Tuscaloosa, AL", "2016", 
+    list("Led students towards the successful execution of projects related to the National Water Model
 Research Fellow",
    "Worked at the National Water Center in advancement of the National Water Model"),
   
@@ -111,7 +111,7 @@ tribble(
 
   "BS in Anthropology & Geography", "California Polytechnic State University", "San Luis Obispo, CA", "2010 - 2015", 
     list("Cum Laude",
-         "Recipient of the Outstanding Senior Award",
+         "Outstanding Senior Award: College of Liberal Arts",
          "\\textbf{Minors}: \\textbf{(1)} GIS for Agriculture \\textbf{(2)} Water Science (Watershed Management) \\textbf{(3)} Statistics \\textbf{(4)} Economics \\textbf{(5)} Environmental Studies")
 ) %>% 
   detailed_entries(what = loc, 
@@ -128,21 +128,8 @@ tribble(
 \textbf{h-index} `r mike_gs$h_index`; \textbf{i-index} `r mike_gs$i10_index`}
 
 ```{r}
-data = cites  %>%
-  mutate(bibtype = "article")
-  # arrange(-year) %>%
-  # mutate(author = gsub("J Johnson", "JM Johnson", author),
-  #        author = gsub("JM Johnson", "JM Johnson", author),
-  #        author = gsub("Johnson, J", "JM Johnson", author),
-  #        author = gsub("Johnson, J. Michael", "JM Johnson", author),
-  #        title  = gsub("Ogc", "OGC", title),
-  #        #itle  = gsub("HY_Features", "HY Features", title),
-  #        #title  = stringr::str_to_title(title),
-  #
-  #        journal  = stringr::str_to_title(journal),
-  #        bibtype = "article")
-
-as.BibEntry(data) %>%
+mutate(cites, bibtype = "article") %>% 
+  as.BibEntry() %>%
   WriteBib("mike-gs.bib")
 
 bibliography_entries("mike-gs.bib") %>%
@@ -154,7 +141,7 @@ bibliography_entries("mike-gs.bib") %>%
 
 # Grants and Fellowships
 
-\textcolor{cyan}{I have personally solicited \textbf{\`r personal`} for research and development and been a core member of teams who have solicited \textbf{\`r team`}.}
+\textcolor{blue}{I have personally solicited \textbf{\`r personal`} for research and development and been a core member of teams who have solicited \textbf{\`r team`}.}
 
 ```{r}
 funds %>%
@@ -169,9 +156,9 @@ funds %>%
 
 # Teaching experience
 
-\textcolor{cyan}{I have designed a upper division spatial data science course as a UCSB Lecturer, was a teaching assistant for over 15 courses (700+ students), and have lead community workshops for national organizations.}
+\textcolor{cyan}{I designed an upper division spatial data science course as a UCSB Lecturer, was a teaching assistant for over 15 courses (700+ students), and have lead community workshops for national organizations.}
 
-## University Teaching
+## \textcolor{blue}{University Teaching}
 
 ```{r}
 tribble(
@@ -187,7 +174,7 @@ tribble(
                    why = details)
 ```
 
-## Teaching Assistant
+## \textcolor{blue}{Teaching Assistant}
 
 ```{r}
 gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuUJpTRtTio0gMO06o/edit#gid=1727236529') %>% 
@@ -207,8 +194,7 @@ gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuU
   arrange(desc(points)) %>% 
   detailed_entries(professor, division, class, data)
 ```
-## Workshops
-
+## \textcolor{blue}{Workshops}
 
 ```{r}
 xx = gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuUJpTRtTio0gMO06o/edit#gid=1176238393') %>% 
@@ -229,7 +215,7 @@ ind = which(unlist(ind))
 
 for(i in 1:length(ind)){ xx$Details[[ind[i]]] = character() }
 
-detailed_entries(xx, 
+detailed_entries(arrange(xx, sort), 
                  what  = Venue, 
                  when  = Type, 
                  with  = Title, 
@@ -238,9 +224,7 @@ detailed_entries(xx,
                  .protect = TRUE)
 ```
 
-
-
-## Award Nominations
+## \textcolor{blue}{Award Nominations}
 
 ```{r}
 gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuUJpTRtTio0gMO06o/edit#gid=1280463790') %>% 
@@ -250,6 +234,7 @@ gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuU
   select(-sort, -source) %>% 
   detailed_entries(when = year, with = name)
 ```
+
 # Open Source Software
 
 \textcolor{cyan}{A primary output of my scientific work is open source software in personal, USGS and NOAA repositories.}
@@ -261,7 +246,6 @@ gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuU
 tribble(
   ~ pkg, ~ role, ~ details,
   "\\href{https://github.com/mikejohnson51/AOI}{AOI}", "Lead Developer", "Fast and flexible geocoding and AOI creation.",
-
   "\\href{https://github.com/mikejohnson51/climateR}{climateR}", "Lead developer", "Instant access to gridded and observation climate data.",
 
   "\\href{https://github.com/mikejohnson51/climateR-catalogs}{climateR-catalogs}", "Lead developer", "A consistent federated data catalog for programmatic access.",
@@ -286,8 +270,6 @@ tribble(
 
 # Invited Presentations
 
-\textcolor{cyan}{Included are recent invited presentations at conferences, federal agency meetings, and developer conferences.}
-
 ```{r}
 xx = gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuUJpTRtTio0gMO06o/edit#gid=766326727') %>% 
   mutate(Details = ifelse(is.na(Details), character(), Details)) %>% 
@@ -307,7 +289,7 @@ ind = which(unlist(ind))
 
 for(i in 1:length(ind)){ xx$Details[[ind[i]]] = character() }
 
-detailed_entries(xx, 
+detailed_entries(arrange(xx, sort), 
                  what  = Venue, 
                  when  = Type, 
                  with  = Title, 
