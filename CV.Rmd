@@ -11,7 +11,7 @@ www: mikejohnson51.github.io
 github: mikejohnson51
 fontawesome: yes
 docname: Curriculum Vitae
-aboutme: I am a \textcolor{cyan}{\textbf{geospatial data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts to define a national suite of hydroinformatic data products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} to design new data products and and develop open-source software to ease community access to big geospatial data.
+aboutme: I am a \textcolor{cyan}{\textbf{geospatial data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts to define a national suite of hydroinformatic data products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} to design new data products and develop open-source software to ease community access to big geospatial data.
 headcolor: 414141
 csl: apa-cv.csl
 output: 
@@ -141,7 +141,7 @@ bibliography_entries("mike-gs.bib") %>%
 
 # Grants and Fellowships
 
-\textcolor{cyan}{I have personally solicited \textbf{\`r personal`} for research and development and been a core member of teams who have solicited \textbf{\`r team`}.}
+}{I have personally solicited \textbf{\`r personal`} for research and development and been a core member of teams who have solicited \textbf{\`r team`}.}
 
 ```{r}
 funds %>%
