@@ -261,6 +261,7 @@ tribble(
   "\\href{https://github.com/doi-usg/hyRefactor}{DOI-USGS/hyRefactor}",  "Author", "Manipulating the NHDPlus Network for Hydrologic Modeling.",
 
   "\\href{https://github.com/NOAA-OWP/hydrofabricI}{NOAA-OWP/hydrofabric}", "Lead Developer", "Generating data products for continental scale hydrology",
+   "\\href{https://github.com/mikejohnson51/FHGestimation}{FHGestimation}", "Lead Developer", "Estimating robust, mass conserving AHG relationships with cross section hydrualics and geometry",
 ) %>%
  detailed_entries(when = role, 
                   with = pkg,
