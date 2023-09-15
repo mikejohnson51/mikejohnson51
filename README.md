@@ -10,7 +10,7 @@ I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scientist 
   <img alt="GDAL" src="https://img.shields.io/badge/-GDAL-45b8d8?style=flat-square&logo=react&logoColor=white" />
   <img alt="git" src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white" />
   <img alt="whitebox" src="https://img.shields.io/badge/-whitebox-E44C30?style=flat-square&logo=react&logoColor=white" />
-  <img alt="AWS" src=" https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
+  <img alt="AWS" src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
   <img alt="QGIS" src="https://img.shields.io/badge/qgis-3.28_firenze-93b023?&style=for-the-badge&logo=qgis&logoColor=white" />
    
   
