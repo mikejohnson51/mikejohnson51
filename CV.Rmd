@@ -147,7 +147,7 @@ bibliography_entries("mike-gs.bib") %>%
 
 # Grants and Fellowships
 
-}{I have personally solicited \textbf{\`r personal`} for research and development and been a core member of teams who have solicited \textbf{\`r team`}.}
+\textcolor{cyan}{I have personally solicited \textbf{\`r personal`} for research and development and been a core member of teams who have solicited \textbf{\`r team`}.}
 
 ```{r}
 funds %>%
