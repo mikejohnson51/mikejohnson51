@@ -17,7 +17,7 @@ I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scientist 
 
 </p>
 
-<h3><a href="CV.pdf">My latest CV</a> (made with <a href="https://pkg.mitchelloharawild.com/vitae/">vitae</a>)</h3>
+<h3><a href="CV.pdf">My latest CV</a> (made with <a href="https://pkg.mitchelloharawild.com/vitae/">vitae</a>)</h3> [![CV refresh](https://github.com/mikejohnson51/mikejohnson51/actions/workflows/generate-cv.yaml/badge.svg)](https://github.com/mikejohnson51/mikejohnson51/actions/workflows/generate-cv.yaml)
 
 <h3>Open source projects</h3>
 <table>
