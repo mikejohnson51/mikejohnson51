@@ -12,12 +12,11 @@ I'm <a href="http://mikejohnson51.github.io">Mike</a>, a Spatial Data Scientist 
   <img alt="whitebox" src="https://img.shields.io/badge/-whitebox-E44C30?style=flat-square&logo=react&logoColor=white" />
   <img alt="AWS" src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
   <img alt="QGIS" src="https://img.shields.io/badge/qgis-3.28_firenze-93b023?&style=for-the-badge&logo=qgis&logoColor=white" />
-   
-  
-
 </p>
 
-<h3><a href="CV.pdf">My latest CV</a> (made with <a href="https://pkg.mitchelloharawild.com/vitae/">vitae</a>)</h3> [![CV refresh](https://github.com/mikejohnson51/mikejohnson51/actions/workflows/generate-cv.yaml/badge.svg)](https://github.com/mikejohnson51/mikejohnson51/actions/workflows/generate-cv.yaml)
+<h3><a href="CV.pdf">My latest CV</a> (made with <a href="https://pkg.mitchelloharawild.com/vitae/">vitae</a>)</h3> 
+
+[![CV refresh](https://github.com/mikejohnson51/mikejohnson51/actions/workflows/generate-cv.yaml/badge.svg)](https://github.com/mikejohnson51/mikejohnson51/actions/workflows/generate-cv.yaml)
 
 <h3>Open source projects</h3>
 <table>
