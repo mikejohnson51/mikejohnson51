@@ -85,11 +85,15 @@ tribble(
   "Lead Hydrofabric Developer", "", "", "Aug 2020 - Sep 2022", 
    character(),
   
+   "Graduate Faculty (Affiliate)", "University of Alabama", "Tuscaloosa, Alabama", "Oct 2023 - Present", 
+    list("Serve as member or co-chair on dissertation and thesis committees"),
+  
+  
   "Lead Data Scientist (Independent Contractor)", "Urban Flooding Open Knowledge Network", "Remote", "Nov 2019 - Apr 2023", 
     list("Co-authored successful proposals to NSF and acted as an advocate for the team in the initial C-ACCEL program",
       "Developed and designed a cost effective, cloud native, building level, flood forecasting system for the Continental United States."),
   
-  "Lecturer", "Geography Department", "UC Santa Barbara", "Summer 2020, 2021", 
+  "Lecturer - Geography Department", "UC Santa Barbara", "Santa Barbara, California", "Summer 2020, 2021", 
     list("Designed and taught the first programming based GIS course for UC Santa Barbara in R."),
   
   "Research Coordinator", "NOAA Office of Water Prediction", "Tuscaloosa, AL", "2016", 
@@ -97,10 +101,10 @@ tribble(
 Research Fellow",
    "Worked at the National Water Center in advancement of the National Water Model"),
   
-  "Graduate Student", "Visiting Researcher", "", "", 
+  "", "Visiting Researcher", "", "2016 - 2018", 
     list("\\textbf{Institute for Environmental Studies. Vrije Universiteit}, Amsterdam, Netherlands: June - July 2019; January - March 2018", 
          "\\textbf{Research Applications Laboratory. NCAR}, Boulder, Colorado: August - September 2018",
-         "\\textbf{NOAA National Water Center}. Tuscaloosa, Alabama: Summers of 2016.2017")
+         "\\textbf{NOAA National Water Center}. Tuscaloosa, Alabama: Summers of 2016, 2017")
 
 ) %>% 
   detailed_entries(role, dates, company, loc, details)
@@ -127,7 +131,6 @@ tribble(
                    where = degree, 
                    why = details)
 ```
-\newpage
 
 # Publications
 
