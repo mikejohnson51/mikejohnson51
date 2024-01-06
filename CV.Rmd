@@ -16,7 +16,8 @@ headcolor: 414141
 csl: apa-cv.csl
 output: 
   vitae::awesomecv:
-    keep_tex: true
+    keep_tex: false
+    page_total: yes
     pandoc_args: ["--lua-filter=lua/strong.lua"]
 ---
 
@@ -35,8 +36,8 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message=FALSE, error=FALSE)
 gs_id = 'MrXM9cgAAAAJ'
 mike_gs = get_profile(gs_id) 
 
-cites = get_publications(gs_id, sortby = "year") %>% 
-   filter(!grepl("AGU|EGU|Fall Meeting|Preprint|SUMMER INSTITUTE", journal)) %>%
+cites = get_publications(gs_id) %>% 
+   filter(!grepl("AGU|EGU|Meeting|meeting|Preprint|SUMMER INSTITUTE", journal)) %>%
    filter(journal != "")
 
 for(i in 1:nrow(cites)){
@@ -69,39 +70,38 @@ tribble(
   ~ role, ~ company, ~ loc, ~ dates, ~ details,
   
   "Chief Data Scientist/ Pod Lead", "Lynker", "Fort Collins, Colorado", "Sep 2023 - Present", 
-    character(),
-  
-  "Water Resources Data Scientist", "", "", "Aug 2020 - Sep 2023", 
-    list("Lead spatial data development for the NOAA NextGen Water Resource Modeling Framework",
-         "Contribute to local and state level consulting projects related to water resource managment and hazard mitigation",
-         "Recruit, retain, and mentor a strong and diverse group of data scientists"
+     list("Lead spatial data development for the NOAA Office of Water Prediciton",
+          "Support local and state level consulting projects related to water resource managment and hazard mitigation",
+          "Recruit, retain, and mentor a strong and diverse group of data scientists"
     ),
   
-  "Hydrofabric Technical Director", "NOAA Office of Water Prediction", "Remote", "Sep 2022 - Present", 
-    list("Develop, document, and publish foundational geospatial products to support version 4 of the National Water Model",
-         "Collaborate with the USGS to build a suite of tools and data products supporting the National Hydrologic Geospatial Fabric", 
-         "Lead a team developing novel machine learning, geospatial, and cloud based solutions of more open and skilled science"),
+  "Water Resources Data Scientist", "", "", "Aug 2020 - Sep 2023", 
+    character(),
   
-  "Lead Hydrofabric Developer", "", "", "Aug 2020 - Sep 2022", 
+  "Hydrofabric Technical Director", "NOAA Office of Water Prediction", "Remote", "Sep 2022 - Present", 
+    list("Develop foundational geospatial products to support the Next Generation Water Modeling Framework",
+         "Collaborate with the USGS to build a suite of federal software and data products to support the NOAA and USGS Water Mission Areas", 
+         "Work with the CIROH member univierities to support research to operation hydrology",
+         "Lead a team developing novel machine learning, geospatial, and cloud based solutions for open hydrologic science"),
+  
+  "Senior Data Scientist @ NWS / Lead Hydrofabric Developer", "", "", "Aug 2020 - Present", 
    character(),
   
-   "Graduate Faculty (Affiliate)", "University of Alabama", "Tuscaloosa, Alabama", "Oct 2023 - Present", 
+   "Graduate Faculty (Affiliate)", "University of Alabama", "Remote", "Oct 2023 - Present", 
     list("Serve as member or co-chair on dissertation and thesis committees"),
   
-  
   "Lead Data Scientist (Independent Contractor)", "Urban Flooding Open Knowledge Network", "Remote", "Nov 2019 - Apr 2023", 
-    list("Co-authored successful proposals to NSF and acted as an advocate for the team in the initial C-ACCEL program",
-      "Developed and designed a cost effective, cloud native, building level, flood forecasting system for the Continental United States."),
+    list("Co-authored successful proposals to NSF and served as an advocate for the team in the initial C-ACCEL program",
+        "Developed and designed a cost effective, cloud native, building level, flood forecasting system for the Continental United States."),
   
   "Lecturer - Geography Department", "UC Santa Barbara", "Santa Barbara, California", "Summer 2020, 2021", 
-    list("Designed and taught the first programming based GIS course for UC Santa Barbara in R."),
+    list("Designed and taught the first geoinformatics course for UC Santa Barbara."),
   
-  "Research Coordinator", "NOAA Office of Water Prediction", "Tuscaloosa, AL", "2016", 
+  "Research Coordinator", "NOAA Office of Water Prediction", "Tuscaloosa, Alabama", "2016", 
     list("Led students towards the successful execution of projects related to the National Water Model
-Research Fellow",
-   "Worked at the National Water Center in advancement of the National Water Model"),
+Research Fellowship"),
   
-  "", "Visiting Researcher", "", "2016 - 2018", 
+  "", "Visiting Researcher", "Amsterdam, Boulder, Tuscaloosa", "2016 - 2018", 
     list("\\textbf{Institute for Environmental Studies. Vrije Universiteit}, Amsterdam, Netherlands: June - July 2019; January - March 2018", 
          "\\textbf{Research Applications Laboratory. NCAR}, Boulder, Colorado: August - September 2018",
          "\\textbf{NOAA National Water Center}. Tuscaloosa, Alabama: Summers of 2016, 2017")
@@ -144,7 +144,6 @@ mutate(cites, bibtype = "article") %>%
 
 bibliography_entries("mike-gs.bib") %>%
   arrange(desc(issued))
-
 ```
 
 
@@ -270,7 +269,7 @@ tribble(
   "\\href{https://github.com/doi-usg/hyRefactor}{DOI-USGS/hyRefactor}",  "Author", "Manipulating the NHDPlus Network for Hydrologic Modeling.",
 
   "\\href{https://github.com/NOAA-OWP/hydrofabricI}{NOAA-OWP/hydrofabric}", "Lead Developer", "Generating data products for continental scale hydrology",
-   "\\href{https://github.com/mikejohnson51/FHGestimation}{FHGestimation}", "Lead Developer", "Estimating robust, mass conserving AHG relationships with cross section hydrualics and geometry",
+   "\\href{https://github.com/mikejohnson51/AHGestimation}{FHGestimation}", "Lead Developer", "Estimating robust, mass conserving AHG relationships with cross section hydrualics and geometry",
 ) %>%
  detailed_entries(when = role, 
                   with = pkg,
