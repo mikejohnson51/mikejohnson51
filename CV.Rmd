@@ -37,7 +37,7 @@ gs_id = 'MrXM9cgAAAAJ'
 mike_gs = get_profile(gs_id) 
 
 cites = get_publications(gs_id) %>% 
-   filter(!grepl("AGU|EGU|Meeting|meeting|Preprint|SUMMER INSTITUTE", journal)) %>%
+   filter(!grepl("AGU|EGU|Meeting|meeting|Preprint|SUMMER INSTITUTE|EarthArXiv|University|Https|Universities", journal)) %>%
    filter(journal != "")
 
 for(i in 1:nrow(cites)){
@@ -269,7 +269,7 @@ tribble(
   "\\href{https://github.com/doi-usg/hyRefactor}{DOI-USGS/hyRefactor}",  "Author", "Manipulating the NHDPlus Network for Hydrologic Modeling.",
 
   "\\href{https://github.com/NOAA-OWP/hydrofabricI}{NOAA-OWP/hydrofabric}", "Lead Developer", "Generating data products for continental scale hydrology",
-   "\\href{https://github.com/mikejohnson51/AHGestimation}{FHGestimation}", "Lead Developer", "Estimating robust, mass conserving AHG relationships with cross section hydrualics and geometry",
+   "\\href{https://github.com/mikejohnson51/AHGestimation}{AHGestimation}", "Lead Developer", "Estimating robust, mass conserving AHG relationships with cross section hydrualics and geometry",
 ) %>%
  detailed_entries(when = role, 
                   with = pkg,
