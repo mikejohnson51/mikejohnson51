@@ -11,7 +11,8 @@ www: mikejohnson51.github.io
 github: mikejohnson51
 fontawesome: yes
 docname: Curriculum Vitae
-aboutme: I am a \textcolor{cyan}{\textbf{geospatial data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts to define a national suite of hydroinformatic data products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} to design new data products and develop open-source software to ease community access to big geospatial data.
+aboutme: I am a \textcolor{cyan}{\textbf{geospatial data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts (USGS/NOAA) to define a national suite of hydroinformatic\'s products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} to design open-source software and data solutions to ease community access to big geospatial data. I still am actively publishing research and am eager to facilitate and grow research collaborations.
+
 headcolor: 414141
 csl: apa-cv.csl
 output: 
@@ -81,7 +82,7 @@ tribble(
   "Hydrofabric Technical Director", "NOAA Office of Water Prediction", "Remote", "Sep 2022 - Present", 
     list("Develop foundational geospatial products to support the Next Generation Water Modeling Framework",
          "Collaborate with the USGS to build a suite of federal software and data products to support the NOAA and USGS Water Mission Areas", 
-         "Work with the CIROH member univierities to support research to operation hydrology",
+         "Work with the CIROH member universities to support 'research to operations' hydrology",
          "Lead a team developing novel machine learning, geospatial, and cloud based solutions for open hydrologic science"),
   
   "Senior Data Scientist @ NWS / Lead Hydrofabric Developer", "", "", "Aug 2020 - Present", 
