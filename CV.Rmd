@@ -11,7 +11,7 @@ www: mikejohnson51.github.io
 github: mikejohnson51
 fontawesome: yes
 docname: Curriculum Vitae
-aboutme: I am a \textcolor{cyan}{\textbf{geospatial data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts (USGS/NOAA) to define a national suite of hydroinformatic\'s products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} to design open-source software and data solutions that ease community access to big geospatial data. I still am actively publishing research and am eager to facilitate and grow research collaborations.
+aboutme: I am a \textcolor{cyan}{\textbf{geospatial data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts (USGS/NOAA) to define a national suite of hydroinformatic\'s products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} through open-source software and novel data solutions. I still am actively publishing research and am eager to facilitate and grow collaborations.
 
 headcolor: 414141
 csl: apa-cv.csl
@@ -299,7 +299,7 @@ ind = which(unlist(ind))
 
 for(i in 1:length(ind)){ xx$Details[[ind[i]]] = character() }
 
-detailed_entries(arrange(xx, sort), 
+detailed_entries(arrange(xx, -sort), 
                  what  = Venue, 
                  when  = Type, 
                  with  = Title, 
