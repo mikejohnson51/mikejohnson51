@@ -38,13 +38,12 @@ gs_id = 'MrXM9cgAAAAJ'
 mike_gs = get_profile(gs_id) 
 
 cites = get_publications(gs_id) %>% 
-   filter(!grepl("AGU|EGU|Meeting|meeting|Preprint|SUMMER INSTITUTE|EarthArXiv|University|Https|Universities", journal)) %>%
+   filter(!grepl("AGU|EGU|Meeting|meeting|Preprint|SUMMER INSTITUTE|EarthArXiv|University|Https|Universities|Frontiers in Hydrology", journal)) %>%
    filter(journal != "")
 
 for(i in 1:nrow(cites)){
   if(!grepl("JM Johnson|J Johnson", cites$author[i])){
-    cites$author[i] = get_complete_authors(id = gs_id, 
-                              pubid = cites$pubid[i])
+    cites$author[i] = get_complete_authors(id = gs_id, pubid = cites$pubid[i])
   }
 }
 
@@ -85,8 +84,12 @@ tribble(
          "Work with the CIROH member universities to support 'research to operations' hydrology",
          "Lead a team developing novel machine learning, geospatial, and cloud based solutions for open hydrologic science"),
   
-  "Senior Data Scientist @ NWS / Lead Hydrofabric Developer", "", "", "Aug 2020 - Present", 
+  "Senior Data Scientist / Lead Hydrofabric Developer", "", "", "Aug 2020 - Present", 
    character(),
+  
+  "Research Coordinator", "", "", "2016", 
+    list("Led students towards the successful execution of projects related to the National Water Model
+Research Fellowship"),
   
    "Graduate Faculty (Affiliate)", "University of Alabama", "Remote", "Oct 2023 - Present", 
     list("Serve as member or co-chair on dissertation and thesis committees"),
@@ -97,12 +100,8 @@ tribble(
   
   "Lecturer - Geography Department", "UC Santa Barbara", "Santa Barbara, California", "Summer 2020, 2021", 
     list("Designed and taught the first geoinformatics course for UC Santa Barbara."),
-  
-  "Research Coordinator", "NOAA Office of Water Prediction", "Tuscaloosa, Alabama", "2016", 
-    list("Led students towards the successful execution of projects related to the National Water Model
-Research Fellowship"),
-  
-  "", "Visiting Researcher", "Amsterdam, Boulder, Tuscaloosa", "2016 - 2018", 
+
+  "", "Visiting Researcher", "Amsterdam, Boulder, Tuscaloosa", "", 
     list("\\textbf{Institute for Environmental Studies. Vrije Universiteit}, Amsterdam, Netherlands: June - July 2019; January - March 2018", 
          "\\textbf{Research Applications Laboratory. NCAR}, Boulder, Colorado: August - September 2018",
          "\\textbf{NOAA National Water Center}. Tuscaloosa, Alabama: Summers of 2016, 2017")
