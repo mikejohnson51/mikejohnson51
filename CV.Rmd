@@ -1,5 +1,5 @@
 ---
-name: Dr. J Michael
+name: J Michael
 surname: Johnson
 position: 'Geographer | Data Scientist | Water Resources'
 address: Fort Collins, Colorado
@@ -11,7 +11,7 @@ www: mikejohnson51.github.io
 github: mikejohnson51
 fontawesome: yes
 docname: Curriculum Vitae
-aboutme: I am a \textcolor{cyan}{\textbf{geospatial data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}} along with collaborative federal efforts (USGS/NOAA) to define a national suite of hydroinformatic\'s products. I seek to bridge \textcolor{cyan}{\textbf{data-intensive computational geography}} with \textcolor{cyan}{\textbf{water resources research}} through open-source software and novel data solutions. I still am actively publishing research and am eager to facilitate and grow collaborations.
+aboutme: I am a \textcolor{cyan}{\textbf{geospatial data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}}. In collaboration with partners at the USGS, I help spearhead efforts to define a comprehensive suite of federal hydroinformatics products. My expertise lies in bridging data-intensive computational geography with water resources research, and building open-source software and  data solutions. Throughout my career, I have actively contributed to cutting-edge research, with a focus on publishing impactful findings and fostering collaborative relationships within the scientific community. I always open to new partnerships address complex challenges in hydrology and geospatial analysis that drive meaningful advancements in the field.
 
 headcolor: 414141
 csl: apa-cv.csl
@@ -38,8 +38,8 @@ gs_id = 'MrXM9cgAAAAJ'
 mike_gs = get_profile(gs_id) 
 
 cites = get_publications(gs_id) %>% 
-   filter(!grepl("AGU|EGU|Meeting|meeting|Preprint|SUMMER INSTITUTE|EarthArXiv|University|Https|Universities|Frontiers in Hydrology", journal)) %>%
-   filter(journal != "")
+   filter(!grepl("AGU|EGU|Meeting|meeting|Preprint|SUMMER INSTITUTE|University|Https|Universities|Frontiers in Hydrology", journal)) #%>%
+   #filter(journal != "")
 
 for(i in 1:nrow(cites)){
   if(!grepl("JM Johnson|J Johnson", cites$author[i])){
@@ -72,24 +72,26 @@ tribble(
   "Chief Data Scientist/ Pod Lead", "Lynker", "Fort Collins, Colorado", "Sep 2023 - Present", 
      list("Lead spatial data development for the NOAA Office of Water Prediciton",
           "Support local and state level consulting projects related to water resource managment and hazard mitigation",
-          "Recruit, retain, and mentor a strong and diverse group of data scientists"
+          "Recruit, retain, and mentor a strong and diverse group of data scientists",
+          "Act as a key liaison between NOAA and external stakeholders, fostering partnerships and knowledge exchange."
     ),
   
   "Water Resources Data Scientist", "", "", "Aug 2020 - Sep 2023", 
     character(),
   
   "Hydrofabric Technical Director", "NOAA Office of Water Prediction", "Remote", "Sep 2022 - Present", 
-    list("Develop foundational geospatial products to support the Next Generation Water Modeling Framework",
-         "Collaborate with the USGS to build federal software and data products to support the NOAA and USGS Water Mission Areas", 
-         "Work with the CIROH member universities to support 'research to operations' hydrology",
-         "Lead a team developing novel machine learning, geospatial, and cloud based solutions for open hydrologic science"),
+    list("Lead the development of foundational geospatial products essential for bolstering the Next Generation Water Modeling Framework.",
+"Foster collaboration with the USGS to construct federal software and data products crucial for advancing the missions of NOAA and USGS Water Mission Areas.",
+"Collaborate closely with member universities of the CIROH (Cooperative Institute for Research to Operations in Hydrology) to facilitate the transition of research findings into operational hydrology practices.",
+"Direct a team dedicated to pioneering geospatial, machine learning, and cloud-based solutions tailored for open hydrologic science"),
   
   "Senior Data Scientist / Lead Hydrofabric Developer", "", "", "Aug 2020 - Present", 
    character(),
   
   "Research Coordinator", "", "", "2016", 
-    list("Led students towards the successful execution of projects related to the National Water Model
-Research Fellowship"),
+    list("Coordinate research activities and initiatives within the NOAA Summer Institute program.",
+        'Facilitate collaboration between participants, mentors, and program organizers to ensure the smooth execution of research projects.',
+        'Evaluate the effectiveness of research activities and contribute to the continuous improvement of the program.'),
   
    "Graduate Faculty (Affiliate)", "University of Alabama", "Remote", "Oct 2023 - Present", 
     list("Serve as member or co-chair on dissertation and thesis committees"),
@@ -109,6 +111,8 @@ Research Fellowship"),
 ) %>% 
   detailed_entries(role, dates, company, loc, details)
 ```
+
+\newpage
 
 # Education
 
