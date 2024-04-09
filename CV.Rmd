@@ -11,8 +11,7 @@ www: mikejohnson51.github.io
 github: mikejohnson51
 fontawesome: yes
 docname: Curriculum Vitae
-aboutme: I am a \textcolor{cyan}{\textbf{geospatial data scientist}} leading the \textcolor{cyan}{\textbf{hydrofabric development for NOAA's Next Generation National Water Model}}. In collaboration with partners at the USGS, I help spearhead efforts to define a comprehensive suite of federal hydroinformatics products. My expertise lies in bridging data-intensive computational geography with water resources research, and building open-source software and  data solutions. Throughout my career, I have actively contributed to cutting-edge research, with a focus on publishing impactful findings and fostering collaborative relationships within the scientific community. I always open to new partnerships address complex challenges in hydrology and geospatial analysis that drive meaningful advancements in the field.
-
+aboutme: As a geospatial data scientist, my expertise lies in bridging data-intensive computational geography with water resources research, and building open-source software and  data solutions. I lead the hydrofabric development and spatial data science efforts for NOAA's Next Generation Water Resources Modeling Framework, and, with partners at the USGS, help spearhead efforts to define a comprehensive suite of federal hydroinformatics products.  Throughout my career, I have actively contributed to cutting-edge research, with a focus on publishing impactful findings and fostering collaborative relationships within the scientific community.
 headcolor: 414141
 csl: apa-cv.csl
 output: 
@@ -80,8 +79,8 @@ tribble(
     character(),
   
   "Hydrofabric Technical Director", "NOAA Office of Water Prediction", "Remote", "Sep 2022 - Present", 
-    list("Lead the development of foundational geospatial products essential for bolstering the Next Generation Water Modeling Framework.",
-"Foster collaboration with the USGS to construct federal software and data products crucial for advancing the missions of NOAA and USGS Water Mission Areas.",
+    list("Lead the development of foundational geospatial products essential to the Next Generation Water Modeling Framework.",
+"Foster collaboration with the USGS to construct federal software and data products crucial for advancing the NOAA and USGS Water Mission Areas.",
 "Collaborate closely with member universities of the CIROH (Cooperative Institute for Research to Operations in Hydrology) to facilitate the transition of research findings into operational hydrology practices.",
 "Direct a team dedicated to pioneering geospatial, machine learning, and cloud-based solutions tailored for open hydrologic science"),
   
