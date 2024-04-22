@@ -54,7 +54,7 @@ s = str_match(stars, "<title>Stars: \\s*(.*?)\\s*</title>")[,2]
 
 funds = gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zyyk8laciZ-3oAJl_tGGLeRcpfuUJpTRtTio0gMO06o/edit#gid=0') 
 
-personal = sum(ifelse(is.na(parse_number(funds$amount2)), parse_number(funds$amount), parse_number(funds$amount2)))
+personal = sum(ifelse(is.na(parse_number(funds$subaward)), parse_number(funds$subaward), parse_number(funds$subaward)))
 personal = paste0("$", formatC(as.numeric(personal), format="f", digits=0, big.mark=","))
 
 team = sum(parse_number(funds$amount))
@@ -141,12 +141,31 @@ tribble(
 \textbf{h-index} `r mike_gs$h_index`; \textbf{i-index} `r mike_gs$i10_index`}
 
 ```{r}
-mutate(cites, bibtype = "article") %>% 
+mutate(cites, bibtype = "article") %>%
   as.BibEntry() %>%
   WriteBib("mike-gs.bib")
 
 bibliography_entries("mike-gs.bib") %>%
   arrange(desc(issued))
+#   
+# library(kableExtra)
+# cites %>% 
+#   mutate(
+#     url = glue::glue('https://scholar.google.com/citations?view_op=view_citation&hl=en&user=MrXM9cgAAAAJ&citation_for_view=MrXM9cgAAAAJ:{pubid}'),
+#     citation = paste0(gsub("JM Johnson", '<b>J.M Johnson</b>', author), 
+#                       ' (', year, "). ",
+#                       text_spec(title, italic = TRUE, link = url), ". ",
+#                       text_spec(journal, italic = FALSE), '.')
+#   ) %>%
+#     arrange(-year) %>% 
+#     select(Year = year, cite = citation) %>% 
+#     group_by(Year) %>% 
+#     mutate(year = c(Year[1], rep("", n() - 1))) %>% 
+#     ungroup() %>% 
+#     mutate(n = n():1) %>% 
+#     select(year, n, cite) %>% 
+#     brief_entries(what = cite, 
+#                   when = year)
 ```
 
 
@@ -156,13 +175,13 @@ bibliography_entries("mike-gs.bib") %>%
 
 ```{r}
 funds %>%
-  mutate(amount = ifelse(is.na(amount2) | amount2 == 0,
+  mutate(amount = ifelse(is.na(subaward) | subaward == 0,
                          amount,
-                         paste0(amount, " (Subaward: ", amount2, ")"))) %>% 
+                         paste0(amount, " (Subaward: ", subaward, ")"))) %>% 
   detailed_entries(what  = source, 
-                   when  = date,
+                   when  = role,
                    with  = name, 
-                   where = amount)
+                   where = date)
 ```
 
 # Teaching experience
