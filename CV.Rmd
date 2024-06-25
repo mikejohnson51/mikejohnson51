@@ -11,7 +11,7 @@ www: mikejohnson51.github.io
 github: mikejohnson51
 fontawesome: yes
 docname: Curriculum Vitae
-aboutme: As a geospatial data scientist, my expertise lies in bridging data-intensive computational geography with water resources research, and building open-source software and  data solutions. I lead the hydrofabric development and spatial data science efforts for NOAA's Next Generation Water Resources Modeling Framework, and, with partners at the USGS, help spearhead efforts to define a comprehensive suite of federal hydroinformatics products.  Throughout my career, I have actively contributed to cutting-edge research, with a focus on publishing impactful findings and fostering collaborative relationships within the scientific community.
+aboutme: As a geospatial data scientist my expertise lies in bridging data-intensive computational geography with water resources research through  open-source software and data solutions. I lead the hydrofabric development and spatial data science efforts for NOAA's Next Generation Water Resources Modeling Framework and, with partners at the USGS, help spearhead a comprehensive suite of federal hydroinformatics products. Throughout my career, I have actively contributed to cutting-edge research, with a focus on publishing impactful findings and fostering collaborative relationships within the scientific community.
 headcolor: 414141
 csl: apa-cv.csl
 output: 
